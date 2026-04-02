@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emlak Vergisi Belgesi</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- PDF & Canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+<div class="controls">
+  <input placeholder="Ad" oninput="setText('ad', this.value)">
+  <input placeholder="Soyad" oninput="setText('soyad', this.value)">
+  <input placeholder="TC" oninput="setText('tc', this.value)">
+  
+  <button onclick="downloadPDF()">PDF indir</button>
+  <button onclick="downloadJPG()">JPG indir</button>
+</div>
+
+<!-- EVRAK -->
+<div id="evrak">
+
+  <div class="header">
+    <img src="logo.png" class="logo">
+    <div class="title">
+      <b>EMLAK VERGİSİ BİLDİRİMİ</b><br>
+      MESKEN / BİNA
+    </div>
+    <img src="qr.png" class="qr">
+  </div>
+
+  <div class="row">
+    <div class="box">ANTAKYA BELEDİYESİ</div>
+    <div class="box">Yılı: 2026</div>
+  </div>
+
+  <div class="row">
+    <div class="box">Vergi Kimlik No: <span id="tc">-</span></div>
+  </div>
+
+  <div class="row">
+    <div class="box">Ad: <span id="ad">-</span></div>
+    <div class="box">Soyad: <span id="soyad">-</span></div>
+  </div>
+
+  <table>
+    <tr>
+      <th>Bina</th>
+      <th>1. Bina</th>
+      <th>2. Bina</th>
+    </tr>
+    <tr>
+      <td>Mahalle</td>
+      <td contenteditable="true">-</td>
+      <td contenteditable="true">-</td>
+    </tr>
+    <tr>
+      <td>Cadde</td>
+      <td contenteditable="true">-</td>
+      <td contenteditable="true">-</td>
+    </tr>
+    <tr>
+      <td>Alan</td>
+      <td contenteditable="true">720,55</td>
+      <td contenteditable="true">720,55</td>
+    </tr>
+    <tr>
+      <td>Vergi</td>
+      <td contenteditable="true">361.000</td>
+      <td contenteditable="true">361.000</td>
+    </tr>
+  </table>
+
+  <div class="footer">
+    Düzenleyen: ALİYE AKINCI
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
