@@ -2,181 +2,310 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emlak Vergisi</title>
 
-<!-- PDF & JPG -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
 body{
-  font-family: Arial;
-  background:#eee;
   margin:0;
+  font-family: Arial;
+  background:#ddd;
 }
 
 .controls{
-  padding:10px;
-  background:white;
   position:sticky;
   top:0;
-  z-index:10;
+  background:white;
+  padding:10px;
+  z-index:999;
 }
 
 #evrak{
   width:210mm;
   min-height:297mm;
-  background:white;
   margin:20px auto;
-  padding:20px;
-  box-shadow:0 0 10px rgba(0,0,0,0.2);
+  background:white;
+  padding:15px;
+  box-shadow:0 0 10px rgba(0,0,0,0.3);
 }
 
+/* HEADER */
 .header{
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-.logo, .qr{
-  width:80px;
-}
+.logo,.qr{width:90px;}
 
 .title{
   text-align:center;
-  font-size:18px;
   font-weight:bold;
+  font-size:16px;
 }
 
-.row{
-  display:flex;
-  margin-top:10px;
-}
-
+/* BOX SYSTEM */
+.row{display:flex; margin-top:5px;}
 .box{
   border:1px solid black;
-  padding:5px;
+  padding:4px;
   flex:1;
-  margin-right:5px;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:20px;
-}
-
-th, td{
-  border:1px solid black;
-  padding:5px;
   font-size:12px;
 }
 
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+  font-size:11px;
+}
+
+td,th{
+  border:1px solid black;
+  padding:4px;
+  vertical-align:middle;
+}
+
+th{background:#f0f0f0;}
+
+.edit{
+  min-height:14px;
+}
+
+/* LEFT VERTICAL */
+.vertical{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  text-align:center;
+  font-weight:bold;
+}
+
+/* FOOTER */
 .footer{
-  margin-top:30px;
+  margin-top:20px;
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
 }
 </style>
-
 </head>
+
 <body>
 
 <div class="controls">
-  <input placeholder="Ad" oninput="setText('ad', this.value)">
-  <input placeholder="Soyad" oninput="setText('soyad', this.value)">
-  <input placeholder="TC" oninput="setText('tc', this.value)">
-  
-  <button onclick="downloadPDF()">PDF indir</button>
-  <button onclick="downloadJPG()">JPG indir</button>
+<button onclick="downloadPDF()">PDF indir</button>
+<button onclick="downloadJPG()">JPG indir</button>
 </div>
 
 <div id="evrak">
 
-  <div class="header">
-    <img src="logo.png" class="logo">
-    <div class="title">
-      EMLAK VERGİSİ BİLDİRİMİ<br>
-      MESKEN / BİNA
-    </div>
-    <img src="qr.png" class="qr">
-  </div>
+<!-- HEADER -->
+<div class="header">
+<img src="logo.png" class="logo">
 
-  <div class="row">
-    <div class="box">ANTAKYA BELEDİYESİ</div>
-    <div class="box">Yılı: 2026</div>
-  </div>
+<div class="title">
+EMLAK VERGİSİ BİLDİRİMİ<br>
+MESKEN / BİNA
+</div>
 
-  <div class="row">
-    <div class="box">Vergi Kimlik No: <span id="tc">-</span></div>
-  </div>
+<img src="qr.png" class="qr">
+</div>
 
-  <div class="row">
-    <div class="box">Ad: <span id="ad">-</span></div>
-    <div class="box">Soyad: <span id="soyad">-</span></div>
-  </div>
+<!-- ÜST -->
+<div class="row">
+<div class="box edit" contenteditable>ANTAKYA BELEDİYESİ</div>
+<div class="box edit" contenteditable>Yılı: 2026</div>
+</div>
 
-  <table>
-    <tr>
-      <th>Bilgi</th>
-      <th>1. Bina</th>
-      <th>2. Bina</th>
-    </tr>
+<div class="row">
+<div class="box edit" contenteditable>Vergi Kimlik No</div>
+<div class="box edit" contenteditable>Telefon</div>
+</div>
 
-    <tr>
-      <td>Mahalle</td>
-      <td contenteditable="true">-</td>
-      <td contenteditable="true">-</td>
-    </tr>
+<div class="row">
+<div class="box edit" contenteditable>Ad</div>
+<div class="box edit" contenteditable>Soyad</div>
+</div>
 
-    <tr>
-      <td>Cadde</td>
-      <td contenteditable="true">-</td>
-      <td contenteditable="true">-</td>
-    </tr>
+<div class="row">
+<div class="box edit" contenteditable>Mahalle</div>
+<div class="box edit" contenteditable>Cadde/Sokak</div>
+</div>
 
-    <tr>
-      <td>Alan (m²)</td>
-      <td contenteditable="true">720,55</td>
-      <td contenteditable="true">720,55</td>
-    </tr>
+<div class="row">
+<div class="box edit" contenteditable>İlçe</div>
+<div class="box edit" contenteditable>İl</div>
+</div>
 
-    <tr>
-      <td>Vergi Değeri</td>
-      <td contenteditable="true">361.000</td>
-      <td contenteditable="true">361.000</td>
-    </tr>
+<!-- ANA TABLO -->
+<table>
 
-  </table>
+<tr>
+<th></th>
+<th>Bilgi</th>
+<th>1. Bina</th>
+<th>2. Bina</th>
+<th>3. Bina</th>
+</tr>
 
-  <div class="footer">
-    Düzenleyen: ALİYE AKINCI
-  </div>
+<tr>
+<td class="vertical" rowspan="10">Bina Bilgileri</td>
+<td>Mahalle</td>
+<td contenteditable class="edit"></td>
+<td contenteditable class="edit"></td>
+<td contenteditable class="edit"></td>
+</tr>
+
+<tr>
+<td>Cadde</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Kapı No</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Ada / Parsel</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Alan (m²)</td>
+<td contenteditable>720,55</td>
+<td contenteditable>720,55</td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Arsa Payı</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>İnşaat Türü</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>İnşaat Sınıfı</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Kullanım</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>İnşaat Yılı</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<!-- VERGİ -->
+<tr>
+<td class="vertical" rowspan="8">Vergi</td>
+<td>Vergi Değeri</td>
+<td contenteditable>361.000</td>
+<td contenteditable>361.000</td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Vergi Matrahı</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Hisse</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Yüzölçümü</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Kalorifer</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Asansör</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Beyan No</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+<tr>
+<td>Toplam Değer</td>
+<td contenteditable></td>
+<td contenteditable></td>
+<td contenteditable></td>
+</tr>
+
+</table>
+
+<!-- FOOTER -->
+<div class="footer">
+<div contenteditable class="edit">Düzenleyen: ALİYE AKINCI</div>
+<div contenteditable class="edit">ASLI GİBİDİR</div>
+</div>
 
 </div>
 
 <script>
-function setText(id, value){
-  document.getElementById(id).innerText = value || "-";
-}
-
 function downloadPDF(){
-  const element = document.getElementById("evrak");
-
   html2pdf().set({
-    margin: 0,
-    filename: 'evrak.pdf',
-    image: { type: 'jpeg', quality: 1 },
-    html2canvas: { scale: 3 },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  }).from(element).save();
+    margin:0,
+    filename:'evrak.pdf',
+    html2canvas:{scale:3},
+    jsPDF:{unit:'mm',format:'a4'}
+  }).from(document.getElementById("evrak")).save();
 }
 
 function downloadJPG(){
-  html2canvas(document.getElementById("evrak"), { scale: 3 }).then(canvas => {
-    let link = document.createElement('a');
-    link.download = 'evrak.jpg';
-    link.href = canvas.toDataURL();
-    link.click();
+  html2canvas(document.getElementById("evrak"), {scale:3}).then(canvas=>{
+    let a=document.createElement("a");
+    a.href=canvas.toDataURL();
+    a.download="evrak.jpg";
+    a.click();
   });
 }
 </script>
