@@ -11,18 +11,17 @@
 }
 
 .logo {
-    position: absolute;  /* sayfanın sol üstüne sabitle */
-    top: 8mm;            /* sayfanın üstünden boşluk */
-    left: 8mm;           /* sayfanın solundan boşluk */
-    width: 30mm;         /* logo genişliği */
-    height: 30mm;        /* logo yüksekliği */
-    border: 1px solid #000; /* istersen sınır koyabilirsin, isteğe bağlı */
+    position: absolute;   /* #page divine göre konumlanacak */
+    top: 0;               /* #page’in üstünden başla */
+    left: 0;              /* #page’in solundan başla */
+    width: 30mm;          /* logo genişliği */
+    height: 30mm;         /* logo yüksekliği */
 }
 
 .logo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;  /* orantıyı bozmadan sığdırır */
+    object-fit: contain;
 }
 
 body {
