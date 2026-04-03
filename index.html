@@ -2,19 +2,19 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Emlak Vergisi</title>
+<title>Evrak</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
 body{
   margin:0;
   background:#ccc;
-  font-family: Arial;
+  font-family:Arial;
 }
 
-/* ÜST BUTON */
+/* BUTON */
 .controls{
   position:fixed;
   top:0;
@@ -25,207 +25,67 @@ body{
 }
 
 /* A4 */
-#evrak{
+#page{
   width:210mm;
   height:297mm;
-  background:white;
   margin:80px auto;
-  box-shadow:0 0 15px rgba(0,0,0,0.3);
   position:relative;
-  padding:10mm;
-  box-sizing:border-box;
+  background:url('evrak.png') no-repeat center;
+  background-size:100% 100%;
 }
 
-/* HEADER */
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logo{width:25mm;}
-.qr{width:25mm;}
-
-.title{
-  text-align:center;
-  font-weight:bold;
-  font-size:14px;
-}
-
-/* GRID SİSTEM */
-.grid{
-  display:grid;
-  grid-template-columns: 20mm repeat(3, 1fr);
-  border:1px solid black;
-  margin-top:5mm;
-}
-
-.cell{
-  border:1px solid black;
-  min-height:8mm;
-  font-size:10px;
-  padding:2px;
-  box-sizing:border-box;
-}
-
-.vertical{
-  writing-mode:vertical-rl;
-  transform:rotate(180deg);
-  text-align:center;
-  font-weight:bold;
-}
-
-/* editable */
-[contenteditable]{
+/* YAZI ALANLARI */
+.field{
+  position:absolute;
+  font-size:12px;
   outline:none;
 }
 
-/* footer */
-.footer{
-  position:absolute;
-  bottom:10mm;
-  left:10mm;
-  right:10mm;
-  display:flex;
-  justify-content:space-between;
-  font-size:11px;
-}
+/* örnek alanlar */
+#ad{ top:55mm; left:40mm; width:60mm; }
+#soyad{ top:55mm; left:110mm; width:60mm; }
+
+#tc{ top:45mm; left:40mm; width:80mm; }
+
+/* tablo örnek */
+#alan1{ top:120mm; left:60mm; width:40mm; }
+#alan2{ top:120mm; left:110mm; width:40mm; }
+
 </style>
 </head>
 
 <body>
 
 <div class="controls">
-<button onclick="downloadPDF()">PDF indir</button>
-<button onclick="downloadJPG()">JPG indir</button>
+<button onclick="pdf()">PDF indir</button>
+<button onclick="jpg()">JPG indir</button>
 </div>
 
-<div id="evrak">
+<div id="page">
 
-<!-- HEADER -->
-<div class="header">
-<img src="logo.png" class="logo">
+<div id="tc" class="field" contenteditable></div>
+<div id="ad" class="field" contenteditable></div>
+<div id="soyad" class="field" contenteditable></div>
 
-<div class="title">
-EMLAK VERGİSİ BİLDİRİMİ<br>
-MESKEN / BİNA
-</div>
-
-<img src="qr.png" class="qr">
-</div>
-
-<!-- ÜST BİLGİ -->
-<div class="grid">
-<div class="cell vertical" rowspan="2">Mükellef</div>
-<div class="cell" contenteditable>Vergi No</div>
-<div class="cell" contenteditable>Telefon</div>
-<div class="cell" contenteditable>Yıl</div>
-
-<div class="cell" contenteditable>Ad Soyad</div>
-<div class="cell" contenteditable>Adres</div>
-<div class="cell" contenteditable>İl / İlçe</div>
-</div>
-
-<!-- BİNA BLOĞU -->
-<div class="grid">
-
-<div class="cell vertical" style="grid-row: span 10;">Bina Bilgileri</div>
-
-<div class="cell">Bilgi</div>
-<div class="cell">1. Bina</div>
-<div class="cell">2. Bina</div>
-
-<div class="cell">Mahalle</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-<div class="cell">Cadde</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-<div class="cell">Kapı No</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-<div class="cell">Ada / Parsel</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-<div class="cell">Alan</div>
-<div class="cell" contenteditable>720,55</div>
-<div class="cell" contenteditable>720,55</div>
-
-<div class="cell">Arsa Payı</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-<div class="cell">İnşaat Türü</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-<div class="cell">Sınıf</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-<div class="cell">Kullanım</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-</div>
-
-<!-- VERGİ BLOĞU -->
-<div class="grid">
-
-<div class="cell vertical" style="grid-row: span 6;">Vergi</div>
-
-<div class="cell">Bilgi</div>
-<div class="cell">1. Bina</div>
-<div class="cell">2. Bina</div>
-
-<div class="cell">Vergi Değeri</div>
-<div class="cell" contenteditable>361.000</div>
-<div class="cell" contenteditable>361.000</div>
-
-<div class="cell">Matrah</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-<div class="cell">Hisse</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-<div class="cell">Beyan No</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-<div class="cell">Toplam</div>
-<div class="cell" contenteditable></div>
-<div class="cell" contenteditable></div>
-
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-<div contenteditable>Düzenleyen</div>
-<div contenteditable>ASLI GİBİDİR</div>
-</div>
+<div id="alan1" class="field" contenteditable>720,55</div>
+<div id="alan2" class="field" contenteditable>720,55</div>
 
 </div>
 
 <script>
-function downloadPDF(){
+function pdf(){
   html2pdf().set({
     margin:0,
     filename:'evrak.pdf',
     html2canvas:{scale:3},
     jsPDF:{unit:'mm',format:'a4'}
-  }).from(document.getElementById("evrak")).save();
+  }).from(document.getElementById("page")).save();
 }
 
-function downloadJPG(){
-  html2canvas(document.getElementById("evrak"), {scale:3}).then(canvas=>{
+function jpg(){
+  html2canvas(document.getElementById("page"),{scale:3}).then(c=>{
     let a=document.createElement("a");
-    a.href=canvas.toDataURL();
+    a.href=c.toDataURL();
     a.download="evrak.jpg";
     a.click();
   });
