@@ -2,93 +2,95 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Evrak</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-<style>
-body{
-  margin:0;
-  background:#ccc;
-  font-family:Arial;
-}
-
-/* BUTON */
-.controls{
-  position:fixed;
-  top:0;
-  width:100%;
-  background:white;
-  padding:10px;
-  z-index:999;
-}
-
-/* A4 */
-#page{
-  width:210mm;
-  height:297mm;
-  margin:80px auto;
-  position:relative;
-  background:url('evrak.png') no-repeat center;
-  background-size:100% 100%;
-}
-
-/* YAZI ALANLARI */
-.field{
-  position:absolute;
-  font-size:12px;
-  outline:none;
-}
-
-/* örnek alanlar */
-#ad{ top:55mm; left:40mm; width:60mm; }
-#soyad{ top:55mm; left:110mm; width:60mm; }
-
-#tc{ top:45mm; left:40mm; width:80mm; }
-
-/* tablo örnek */
-#alan1{ top:120mm; left:60mm; width:40mm; }
-#alan2{ top:120mm; left:110mm; width:40mm; }
-
-</style>
+<title>Emlak Evrak</title>
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 </head>
 
-<body>
+<body style="font-family:Arial; padding:20px;">
 
-<div class="controls">
-<button onclick="pdf()">PDF indir</button>
-<button onclick="jpg()">JPG indir</button>
-</div>
+<h3>Emlak Vergisi Evrak</h3>
 
-<div id="page">
+<!-- ÜST -->
+<input id="tc" placeholder="Vergi No"><br><br>
+<input id="ad" placeholder="Ad"><br><br>
+<input id="soyad" placeholder="Soyad"><br><br>
+<input id="adres" placeholder="Adres"><br><br>
 
-<div id="tc" class="field" contenteditable></div>
-<div id="ad" class="field" contenteditable></div>
-<div id="soyad" class="field" contenteditable></div>
+<!-- BİNA -->
+<input id="mah1" placeholder="1. Bina Mahalle">
+<input id="mah2" placeholder="2. Bina Mahalle"><br><br>
 
-<div id="alan1" class="field" contenteditable>720,55</div>
-<div id="alan2" class="field" contenteditable>720,55</div>
+<input id="cad1" placeholder="1. Cadde">
+<input id="cad2" placeholder="2. Cadde"><br><br>
 
-</div>
+<input id="kapi1" placeholder="Kapı No 1">
+<input id="kapi2" placeholder="Kapı No 2"><br><br>
+
+<input id="alan1" placeholder="Alan 1">
+<input id="alan2" placeholder="Alan 2"><br><br>
+
+<input id="arsa1" placeholder="Arsa Payı 1">
+<input id="arsa2" placeholder="Arsa Payı 2"><br><br>
+
+<!-- VERGİ -->
+<input id="vergi1" placeholder="Vergi 1">
+<input id="vergi2" placeholder="Vergi 2"><br><br>
+
+<input id="matrah1" placeholder="Matrah 1">
+<input id="matrah2" placeholder="Matrah 2"><br><br>
+
+<button onclick="olustur()">PDF indir</button>
 
 <script>
-function pdf(){
-  html2pdf().set({
-    margin:0,
-    filename:'evrak.pdf',
-    html2canvas:{scale:3},
-    jsPDF:{unit:'mm',format:'a4'}
-  }).from(document.getElementById("page")).save();
-}
+async function olustur(){
 
-function jpg(){
-  html2canvas(document.getElementById("page"),{scale:3}).then(c=>{
-    let a=document.createElement("a");
-    a.href=c.toDataURL();
-    a.download="evrak.jpg";
-    a.click();
-  });
+  const existingPdfBytes = await fetch('evrak.pdf').then(res => res.arrayBuffer());
+  const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+  const page = pdfDoc.getPages()[0];
+  const { height } = page.getSize();
+
+  const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+
+  function yaz(id, x, y, size=9){
+    const val = document.getElementById(id).value || "";
+    page.drawText(val, { x:x, y:height-y, size:size, font });
+  }
+
+  // 🔹 ÜST BİLGİLER
+  yaz("tc", 130, 110);
+  yaz("ad", 130, 140);
+  yaz("soyad", 300, 140);
+  yaz("adres", 130, 170);
+
+  // 🔹 BİNA 1
+  yaz("mah1", 180, 300);
+  yaz("cad1", 180, 330);
+  yaz("kapi1", 180, 360);
+  yaz("alan1", 180, 420);
+  yaz("arsa1", 180, 450);
+
+  // 🔹 BİNA 2
+  yaz("mah2", 320, 300);
+  yaz("cad2", 320, 330);
+  yaz("kapi2", 320, 360);
+  yaz("alan2", 320, 420);
+  yaz("arsa2", 320, 450);
+
+  // 🔹 VERGİ
+  yaz("vergi1", 180, 520);
+  yaz("vergi2", 320, 520);
+
+  yaz("matrah1", 180, 550);
+  yaz("matrah2", 320, 550);
+
+  // PDF oluştur
+  const pdfBytes = await pdfDoc.save();
+
+  const blob = new Blob([pdfBytes], { type: "application/pdf" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "evrak.pdf";
+  link.click();
 }
 </script>
 
