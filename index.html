@@ -10,6 +10,21 @@
     margin: 0;
 }
 
+.logo {
+    position: absolute;  /* sayfanın sol üstüne sabitle */
+    top: 8mm;            /* sayfanın üstünden boşluk */
+    left: 8mm;           /* sayfanın solundan boşluk */
+    width: 30mm;         /* logo genişliği */
+    height: 30mm;        /* logo yüksekliği */
+    border: 1px solid #000; /* istersen sınır koyabilirsin, isteğe bağlı */
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* orantıyı bozmadan sığdırır */
+}
+
 body {
     margin: 0;
     background: #ccc;
@@ -105,6 +120,10 @@ td, th {
 </head>
 
 <body>
+
+<div class="logo">
+    <img src="logo.png" alt="Logo">
+</div>
 
 <div id="page">
 
