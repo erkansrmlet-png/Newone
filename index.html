@@ -10,25 +10,30 @@
 <style>
 body{
   margin:0;
+  background:#ccc;
   font-family: Arial;
-  background:#ddd;
 }
 
+/* ÜST BUTON */
 .controls{
-  position:sticky;
+  position:fixed;
   top:0;
+  width:100%;
   background:white;
   padding:10px;
   z-index:999;
 }
 
+/* A4 */
 #evrak{
   width:210mm;
-  min-height:297mm;
-  margin:20px auto;
+  height:297mm;
   background:white;
-  padding:15px;
-  box-shadow:0 0 10px rgba(0,0,0,0.3);
+  margin:80px auto;
+  box-shadow:0 0 15px rgba(0,0,0,0.3);
+  position:relative;
+  padding:10mm;
+  box-sizing:border-box;
 }
 
 /* HEADER */
@@ -38,44 +43,31 @@ body{
   align-items:center;
 }
 
-.logo,.qr{width:90px;}
+.logo{width:25mm;}
+.qr{width:25mm;}
 
 .title{
   text-align:center;
   font-weight:bold;
-  font-size:16px;
+  font-size:14px;
 }
 
-/* BOX SYSTEM */
-.row{display:flex; margin-top:5px;}
-.box{
+/* GRID SİSTEM */
+.grid{
+  display:grid;
+  grid-template-columns: 20mm repeat(3, 1fr);
   border:1px solid black;
-  padding:4px;
-  flex:1;
-  font-size:12px;
+  margin-top:5mm;
 }
 
-/* TABLE */
-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:10px;
-  font-size:11px;
-}
-
-td,th{
+.cell{
   border:1px solid black;
-  padding:4px;
-  vertical-align:middle;
+  min-height:8mm;
+  font-size:10px;
+  padding:2px;
+  box-sizing:border-box;
 }
 
-th{background:#f0f0f0;}
-
-.edit{
-  min-height:14px;
-}
-
-/* LEFT VERTICAL */
 .vertical{
   writing-mode:vertical-rl;
   transform:rotate(180deg);
@@ -83,12 +75,20 @@ th{background:#f0f0f0;}
   font-weight:bold;
 }
 
-/* FOOTER */
+/* editable */
+[contenteditable]{
+  outline:none;
+}
+
+/* footer */
 .footer{
-  margin-top:20px;
+  position:absolute;
+  bottom:10mm;
+  left:10mm;
+  right:10mm;
   display:flex;
   justify-content:space-between;
-  font-size:12px;
+  font-size:11px;
 }
 </style>
 </head>
@@ -114,178 +114,100 @@ MESKEN / BİNA
 <img src="qr.png" class="qr">
 </div>
 
-<!-- ÜST -->
-<div class="row">
-<div class="box edit" contenteditable>ANTAKYA BELEDİYESİ</div>
-<div class="box edit" contenteditable>Yılı: 2026</div>
+<!-- ÜST BİLGİ -->
+<div class="grid">
+<div class="cell vertical" rowspan="2">Mükellef</div>
+<div class="cell" contenteditable>Vergi No</div>
+<div class="cell" contenteditable>Telefon</div>
+<div class="cell" contenteditable>Yıl</div>
+
+<div class="cell" contenteditable>Ad Soyad</div>
+<div class="cell" contenteditable>Adres</div>
+<div class="cell" contenteditable>İl / İlçe</div>
 </div>
 
-<div class="row">
-<div class="box edit" contenteditable>Vergi Kimlik No</div>
-<div class="box edit" contenteditable>Telefon</div>
+<!-- BİNA BLOĞU -->
+<div class="grid">
+
+<div class="cell vertical" style="grid-row: span 10;">Bina Bilgileri</div>
+
+<div class="cell">Bilgi</div>
+<div class="cell">1. Bina</div>
+<div class="cell">2. Bina</div>
+
+<div class="cell">Mahalle</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
+<div class="cell">Cadde</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
+<div class="cell">Kapı No</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
+<div class="cell">Ada / Parsel</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
+<div class="cell">Alan</div>
+<div class="cell" contenteditable>720,55</div>
+<div class="cell" contenteditable>720,55</div>
+
+<div class="cell">Arsa Payı</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
+<div class="cell">İnşaat Türü</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
+<div class="cell">Sınıf</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
+<div class="cell">Kullanım</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
 </div>
 
-<div class="row">
-<div class="box edit" contenteditable>Ad</div>
-<div class="box edit" contenteditable>Soyad</div>
+<!-- VERGİ BLOĞU -->
+<div class="grid">
+
+<div class="cell vertical" style="grid-row: span 6;">Vergi</div>
+
+<div class="cell">Bilgi</div>
+<div class="cell">1. Bina</div>
+<div class="cell">2. Bina</div>
+
+<div class="cell">Vergi Değeri</div>
+<div class="cell" contenteditable>361.000</div>
+<div class="cell" contenteditable>361.000</div>
+
+<div class="cell">Matrah</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
+<div class="cell">Hisse</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
+<div class="cell">Beyan No</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
+<div class="cell">Toplam</div>
+<div class="cell" contenteditable></div>
+<div class="cell" contenteditable></div>
+
 </div>
-
-<div class="row">
-<div class="box edit" contenteditable>Mahalle</div>
-<div class="box edit" contenteditable>Cadde/Sokak</div>
-</div>
-
-<div class="row">
-<div class="box edit" contenteditable>İlçe</div>
-<div class="box edit" contenteditable>İl</div>
-</div>
-
-<!-- ANA TABLO -->
-<table>
-
-<tr>
-<th></th>
-<th>Bilgi</th>
-<th>1. Bina</th>
-<th>2. Bina</th>
-<th>3. Bina</th>
-</tr>
-
-<tr>
-<td class="vertical" rowspan="10">Bina Bilgileri</td>
-<td>Mahalle</td>
-<td contenteditable class="edit"></td>
-<td contenteditable class="edit"></td>
-<td contenteditable class="edit"></td>
-</tr>
-
-<tr>
-<td>Cadde</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Kapı No</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Ada / Parsel</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Alan (m²)</td>
-<td contenteditable>720,55</td>
-<td contenteditable>720,55</td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Arsa Payı</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>İnşaat Türü</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>İnşaat Sınıfı</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Kullanım</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>İnşaat Yılı</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<!-- VERGİ -->
-<tr>
-<td class="vertical" rowspan="8">Vergi</td>
-<td>Vergi Değeri</td>
-<td contenteditable>361.000</td>
-<td contenteditable>361.000</td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Vergi Matrahı</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Hisse</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Yüzölçümü</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Kalorifer</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Asansör</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Beyan No</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-<tr>
-<td>Toplam Değer</td>
-<td contenteditable></td>
-<td contenteditable></td>
-<td contenteditable></td>
-</tr>
-
-</table>
 
 <!-- FOOTER -->
 <div class="footer">
-<div contenteditable class="edit">Düzenleyen: ALİYE AKINCI</div>
-<div contenteditable class="edit">ASLI GİBİDİR</div>
+<div contenteditable>Düzenleyen</div>
+<div contenteditable>ASLI GİBİDİR</div>
 </div>
 
 </div>
