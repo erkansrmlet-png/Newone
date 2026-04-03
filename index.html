@@ -2,95 +2,183 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Emlak Evrak</title>
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<title>Emlak Vergisi Belgesi</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background:#eee;
+    margin:0;
+    padding:20px;
+}
+
+#evrak {
+    width: 794px;
+    min-height: 1123px;
+    background:#fff;
+    padding:20px;
+    margin:auto;
+    border:1px solid #000;
+}
+
+h2 {
+    text-align:center;
+    margin:5px 0;
+}
+
+.row {
+    display:flex;
+    gap:10px;
+    margin-bottom:5px;
+}
+
+input {
+    border:1px solid #000;
+    padding:4px;
+    width:100%;
+    font-size:12px;
+}
+
+.label {
+    font-size:12px;
+    width:150px;
+}
+
+.table {
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+.table td, .table th {
+    border:1px solid #000;
+    padding:4px;
+    font-size:12px;
+}
+
+button {
+    margin:10px;
+    padding:10px 20px;
+    font-size:16px;
+}
+</style>
 </head>
 
-<body style="font-family:Arial; padding:20px;">
+<body>
 
-<h3>Emlak Vergisi Evrak</h3>
+<button onclick="downloadPDF()">PDF İndir</button>
 
-<!-- ÜST -->
-<input id="tc" placeholder="Vergi No"><br><br>
-<input id="ad" placeholder="Ad"><br><br>
-<input id="soyad" placeholder="Soyad"><br><br>
-<input id="adres" placeholder="Adres"><br><br>
+<div id="evrak">
 
-<!-- BİNA -->
-<input id="mah1" placeholder="1. Bina Mahalle">
-<input id="mah2" placeholder="2. Bina Mahalle"><br><br>
+<h2>EMLAK VERGİSİ BİLDİRİMİ</h2>
+<h2>MESKEN / BİNA</h2>
 
-<input id="cad1" placeholder="1. Cadde">
-<input id="cad2" placeholder="2. Cadde"><br><br>
+<div class="row">
+    <div class="label">Belediye:</div>
+    <input value="ANTAKYA BELEDİYESİ">
+    <div class="label">Yıl:</div>
+    <input value="2026">
+</div>
 
-<input id="kapi1" placeholder="Kapı No 1">
-<input id="kapi2" placeholder="Kapı No 2"><br><br>
+<div class="row">
+    <div class="label">Tarih:</div>
+    <input value="21.01.2026">
+</div>
 
-<input id="alan1" placeholder="Alan 1">
-<input id="alan2" placeholder="Alan 2"><br><br>
+<div class="row">
+    <div class="label">TC Kimlik:</div>
+    <input value="21790984820">
+</div>
 
-<input id="arsa1" placeholder="Arsa Payı 1">
-<input id="arsa2" placeholder="Arsa Payı 2"><br><br>
+<div class="row">
+    <div class="label">Ad Soyad:</div>
+    <input value="SÜLEYMAN SAYIN">
+</div>
 
-<!-- VERGİ -->
-<input id="vergi1" placeholder="Vergi 1">
-<input id="vergi2" placeholder="Vergi 2"><br><br>
+<div class="row">
+    <div class="label">Mahalle:</div>
+    <input value="GÜNYAZI">
+</div>
 
-<input id="matrah1" placeholder="Matrah 1">
-<input id="matrah2" placeholder="Matrah 2"><br><br>
+<div class="row">
+    <div class="label">Cadde:</div>
+    <input value="KAMİL GÖRÜR CADDE">
+</div>
 
-<button onclick="olustur()">PDF indir</button>
+<table class="table">
+<tr>
+<th>Bilgi</th>
+<th>1. Bina</th>
+<th>2. Bina</th>
+</tr>
+
+<tr>
+<td>Arsa Alanı</td>
+<td><input value="720,55"></td>
+<td><input value="720,55"></td>
+</tr>
+
+<tr>
+<td>İnşaat Türü</td>
+<td><input value="BETONARME"></td>
+<td><input value="BETONARME"></td>
+</tr>
+
+<tr>
+<td>İnşaat Sınıfı</td>
+<td><input value="3. SINIF"></td>
+<td><input value="3. SINIF"></td>
+</tr>
+
+<tr>
+<td>Kullanım</td>
+<td><input value="MESKEN"></td>
+<td><input value="MESKEN"></td>
+</tr>
+
+<tr>
+<td>Vergi Değeri</td>
+<td><input value="361.201,39"></td>
+<td><input value="361.201,39"></td>
+</tr>
+
+</table>
+
+<br>
+
+<div class="row">
+    <div class="label">Düzenleyen:</div>
+    <input value="ALİYE AKINCI">
+</div>
+
+<div class="row">
+    <div class="label">Ünvan:</div>
+    <input value="ŞEF">
+</div>
+
+</div>
 
 <script>
-async function olustur(){
+async function downloadPDF() {
+    const { jsPDF } = window.jspdf;
 
-  const existingPdfBytes = await fetch('evrak.pdf').then(res => res.arrayBuffer());
-  const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
-  const page = pdfDoc.getPages()[0];
-  const { height } = page.getSize();
+    const element = document.getElementById("evrak");
 
-  const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+    const canvas = await html2canvas(element, {
+        scale: 3   // HD kalite
+    });
 
-  function yaz(id, x, y, size=9){
-    const val = document.getElementById(id).value || "";
-    page.drawText(val, { x:x, y:height-y, size:size, font });
-  }
+    const imgData = canvas.toDataURL("image/png");
 
-  // 🔹 ÜST BİLGİLER
-  yaz("tc", 130, 110);
-  yaz("ad", 130, 140);
-  yaz("soyad", 300, 140);
-  yaz("adres", 130, 170);
+    const pdf = new jsPDF("p", "mm", "a4");
 
-  // 🔹 BİNA 1
-  yaz("mah1", 180, 300);
-  yaz("cad1", 180, 330);
-  yaz("kapi1", 180, 360);
-  yaz("alan1", 180, 420);
-  yaz("arsa1", 180, 450);
+    const width = 210;
+    const height = (canvas.height * width) / canvas.width;
 
-  // 🔹 BİNA 2
-  yaz("mah2", 320, 300);
-  yaz("cad2", 320, 330);
-  yaz("kapi2", 320, 360);
-  yaz("alan2", 320, 420);
-  yaz("arsa2", 320, 450);
-
-  // 🔹 VERGİ
-  yaz("vergi1", 180, 520);
-  yaz("vergi2", 320, 520);
-
-  yaz("matrah1", 180, 550);
-  yaz("matrah2", 320, 550);
-
-  // PDF oluştur
-  const pdfBytes = await pdfDoc.save();
-
-  const blob = new Blob([pdfBytes], { type: "application/pdf" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "evrak.pdf";
-  link.click();
+    pdf.addImage(imgData, "PNG", 0, 0, width, height);
+    pdf.save("emlak-belgesi.pdf");
 }
 </script>
 
