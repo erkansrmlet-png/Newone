@@ -18,32 +18,32 @@
             color: #333;
         }
 
-        /* Üst Bar (Navbar) - Yüksekliği Sabitlendi */
+        /* Üst Bar (Navbar) */
         header {
             background-color: #343a4b; 
-            height: 80px; /* Bar yüksekliği artık sabit */
+            height: 80px;
             display: flex;
-            align-items: center; /* İçerikleri dikeyde ortalar */
+            align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             border-bottom: 4px solid #8e7c5e;
-            position: sticky; /* Sayfa kayınca barın üstte kalması için */
+            position: sticky;
             top: 0;
             z-index: 1000;
         }
 
+        /* Konteyner - Boşluklar sıfırlandı */
         .container {
-            width: 90%;
-            max-width: 1300px;
-            margin: 0 auto;
+            width: 100%; 
+            padding: 0; /* Kenar boşluklarını tamamen kaldırdık */
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /* Logo Bölümü - Barı Taşırmaz */
+        /* Logo Bölümü - Köşeye sıfırlandı */
         .logo-container img {
-            max-height: 100px; /* Bar 80px olduğu için logoyu 60px ile sınırladık */
-            width: auto;      /* Oranı bozmaz */
+            max-height: 95px; /* Bar yüksekliğiyle aynı yaparak tam doldurmasını sağladık */
+            width: auto;
             display: block;
         }
 
@@ -52,6 +52,7 @@
             list-style: none;
             display: flex;
             gap: 30px;
+            padding-right: 30px; /* Sadece menülerin sağdan biraz boşluğu olsun */
         }
 
         nav a {
@@ -83,12 +84,6 @@
 
         h1 {
             color: #343a4b;
-            margin-bottom: 15px;
-        }
-
-        p {
-            color: #666;
-            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -103,7 +98,6 @@
                 <ul>
                     <li><a href="#">Anasayfa</a></li>
                     <li><a href="#">Hizmetler</a></li>
-                    <li><a href="#">Duyurular</a></li>
                     <li><a href="#">İletişim</a></li>
                 </ul>
             </nav>
@@ -112,8 +106,8 @@
 
     <main>
         <div class="hero-section">
-            <h1>Sabit Bar ve Logo Düzeni</h1>
-            <p>Logo ne kadar büyük olursa olsun üst barın yüksekliği artık değişmeyecek.</p>
+            <h1>Köşeye Sıfırlı Logo Düzeni</h1>
+            <p>Logo artık ekranın en sol üst köşesine tam olarak dayalı durumda.</p>
         </div>
     </main>
 
