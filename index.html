@@ -18,12 +18,17 @@
             color: #333;
         }
 
-        /* Üst Bar (Navbar) */
+        /* Üst Bar (Navbar) - Yüksekliği Sabitlendi */
         header {
-            background-color: #343a4b; /* Logodaki koyu gri/lacivert ton */
-            padding: 12px 0;
+            background-color: #343a4b; 
+            height: 80px; /* Bar yüksekliği artık sabit */
+            display: flex;
+            align-items: center; /* İçerikleri dikeyde ortalar */
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            border-bottom: 4px solid #8e7c5e; /* Logodaki bej/altın tonu */
+            border-bottom: 4px solid #8e7c5e;
+            position: sticky; /* Sayfa kayınca barın üstte kalması için */
+            top: 0;
+            z-index: 1000;
         }
 
         .container {
@@ -35,9 +40,10 @@
             align-items: center;
         }
 
-        /* Logo Bölümü */
+        /* Logo Bölümü - Barı Taşırmaz */
         .logo-container img {
-            height: 130px; /* Logonun boyutu */
+            max-height: 100px; /* Bar 80px olduğu için logoyu 60px ile sınırladık */
+            width: auto;      /* Oranı bozmaz */
             display: block;
         }
 
@@ -50,7 +56,7 @@
 
         nav a {
             text-decoration: none;
-            color: #8ed0d4; /* Logodaki açık mavi tonu */
+            color: #8ed0d4;
             font-weight: 600;
             font-size: 1.1rem;
             transition: 0.3s;
@@ -72,6 +78,7 @@
             border-radius: 12px;
             display: inline-block;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 20px;
         }
 
         h1 {
@@ -105,8 +112,8 @@
 
     <main>
         <div class="hero-section">
-            <h1>Sistem Arayüzü Başlatıldı</h1>
-            <p>GitHub üzerinden geliştirmeye devam edeceğimiz web sitesi iskeleti hazır.</p>
+            <h1>Sabit Bar ve Logo Düzeni</h1>
+            <p>Logo ne kadar büyük olursa olsun üst barın yüksekliği artık değişmeyecek.</p>
         </div>
     </main>
 
