@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samandağ Belediyesi - Proje</title>
+    <title>Samandağ Belediyesi - Resmi Web Sitesi</title>
     <style>
-        /* Temel Ayarlar */
+        /* Temel Sıfırlama */
         * {
             margin: 0;
             padding: 0;
@@ -14,76 +14,97 @@
         }
 
         body {
-            background-color: #f0f2f5;
-            color: #333;
+            background-color: #f4f6f8;
         }
 
-        /* Üst Bar (Navbar) */
+        /* Üst Bar Tasarımı - Logo ile Tam Uyumlu */
         header {
-            background-color: #343a4b; 
-            height: 80px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            border-bottom: 4px solid #8e7c5e;
+            /* Logonun ana arka plan rengi */
+            background-color: #3b4252; 
+            height: 90px;
             position: sticky;
             top: 0;
             z-index: 1000;
+            display: flex;
+            align-items: center;
+            /* Logonun altındaki altın/bej çizgi */
+            border-bottom: 5px solid #8e7c5e; 
         }
 
-        /* Konteyner - Boşluklar sıfırlandı */
+        /* Logonun altındaki gölge efekti (Görseldeki geçiş) */
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -15px; /* Çizginin hemen altına */
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+            pointer-events: none;
+        }
+
         .container {
-            width: 100%; 
-            padding: 0; /* Kenar boşluklarını tamamen kaldırdık */
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-right: 50px;
         }
 
-        /* Logo Bölümü - Köşeye sıfırlandı */
-        .logo-container img {
-            max-height: 95px; /* Bar yüksekliğiyle aynı yaparak tam doldurmasını sağladık */
+        /* Logo Alanı - Sol Köşeye Sıfır */
+        .logo-box {
+            height: 95px; /* Header yüksekliğiyle aynı */
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-box img {
+            height: 100%; /* Barı dikeyde tam doldurur */
             width: auto;
             display: block;
         }
 
-        /* Menü Linkleri */
+        /* Navigasyon Menüsü */
         nav ul {
             list-style: none;
             display: flex;
-            gap: 30px;
-            padding-right: 30px; /* Sadece menülerin sağdan biraz boşluğu olsun */
+            gap: 40px;
         }
 
         nav a {
             text-decoration: none;
-            color: #8ed0d4;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: 0.3s;
+            /* Logodaki açık mavi tonu */
+            color: #8ed0d4; 
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: 0.3s ease;
         }
 
         nav a:hover {
             color: #ffffff;
+            text-shadow: 0 0 8px rgba(142, 208, 212, 0.6);
         }
 
-        /* Ana İçerik Alanı */
+        /* Sayfa İçeriği Test Alanı */
         main {
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
 
-        .hero-section {
+        .intro {
             background: white;
-            padding: 40px;
-            border-radius: 12px;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-top: 20px;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         h1 {
-            color: #343a4b;
+            color: #3b4252;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -91,13 +112,14 @@
 
     <header>
         <div class="container">
-            <div class="logo-container">
-                <img src="logo.png" alt="Samandağ Belediyesi">
+            <div class="logo-box">
+                <img src="logo.png" alt="Samandağ Belediyesi Logo">
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Anasayfa</a></li>
+                    <li><a href="#">Kurumsal</a></li>
                     <li><a href="#">Hizmetler</a></li>
+                    <li><a href="#">Projeler</a></li>
                     <li><a href="#">İletişim</a></li>
                 </ul>
             </nav>
@@ -105,9 +127,9 @@
     </header>
 
     <main>
-        <div class="hero-section">
-            <h1>Köşeye Sıfırlı Logo Düzeni</h1>
-            <p>Logo artık ekranın en sol üst köşesine tam olarak dayalı durumda.</p>
+        <div class="intro">
+            <h1>Kurumsal Arayüz Tasarımı</h1>
+            <p>Üst barın altındaki altın rengi şerit ve gölge geçişi, logo görselindeki detaylarla birebir eşleşecek şekilde ayarlandı.</p>
         </div>
     </main>
 
