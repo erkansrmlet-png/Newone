@@ -1,237 +1,114 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Emlak Vergisi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samandağ Belediyesi - Proje</title>
+    <style>
+        /* Temel Ayarlar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-<style>
-@page {
-    size: A4;
-    margin: 0;
-}
-    
-.logo {
-    position: absolute;   /* #page divine göre konumlanacak */
-    top: 0;               /* #page’in üstünden başla */
-    left: 50;              /* #page’in solundan başla */
-    width: 30mm;          /* logo genişliği */
-    height: 30mm;         /* logo yüksekliği */
-}
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+        }
 
-.logo {
-    position: absolute;
-    top: 8mm;    /* padding kadar */
-    left: 8mm;   /* padding kadar */
-    width: 30mm;
-    height: 30mm;
-}
+        /* Üst Bar (Navbar) */
+        header {
+            background-color: #343a4b; /* Logodaki koyu gri/lacivert ton */
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-bottom: 4px solid #8e7c5e; /* Logodaki bej/altın tonu */
+        }
 
-.logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-#page {
-    width: 210mm;
-    height: 297mm;
-    background: white;
-    margin: auto;
-    padding: 8mm;
-    box-sizing: border-box;
-    position: relative;
-}
+        /* Logo Bölümü */
+        .logo-container img {
+            height: 70px; /* Logonun boyutu */
+            display: block;
+        }
 
-/* GENEL */
-.small { font-size: 9px; }
-.normal { font-size: 10px; }
-.bold { font-weight: bold; }
-.center { text-align: center; }
-.right { text-align: right; }
+        /* Menü Linkleri */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
 
-/* KUTU */
-.box {
-    border: 1px solid #000;
-    padding: 2px 4px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-}
+        nav a {
+            text-decoration: none;
+            color: #8ed0d4; /* Logodaki açık mavi tonu */
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
 
-/* FLEX SATIR */
-.row {
-    display: flex;
-    gap: 2mm;
-    margin-bottom: 2mm;
-}
+        nav a:hover {
+            color: #ffffff;
+        }
 
-/* INPUT */
-input {
-    width: 100%;
-    border: none;
-    font-size: 10px;
-    outline: none;
-    height: 100%;
-    box-sizing: border-box;
-}
+        /* Ana İçerik Alanı */
+        main {
+            padding: 60px 20px;
+            text-align: center;
+        }
 
-/* TABLO */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 9px;
-}
+        .hero-section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
 
-td, th {
-    border: 1px solid #000;
-    padding: 2px;
-    vertical-align: middle;
-}
+        h1 {
+            color: #343a4b;
+            margin-bottom: 15px;
+        }
 
-/* DİKEY YAZI */
-.vertical {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    text-align: center;
-}
-
-/* BAŞLIK */
-.title {
-    font-size: 13px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.subtitle {
-    font-size: 11px;
-    text-align: center;
-    margin-bottom: 3mm;
-}
-
-/* QR */
-.qr {
-    position: absolute;
-    right: 8mm;
-    top: 8mm;
-    width: 25mm;
-    height: 25mm;
-    border: 1px solid #000;
-}
-</style>
+        p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="logo">
-    <img src="logo.png" alt="Logo">
-</div>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo.png" alt="Samandağ Belediyesi">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Anasayfa</a></li>
+                    <li><a href="#">Hizmetler</a></li>
+                    <li><a href="#">Duyurular</a></li>
+                    <li><a href="#">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<div id="page">
-
-<div class="title">EMLAK VERGİSİ BİLDİRİMİ</div>
-<div class="subtitle">MESKEN / BİNA</div>
-
-<div class="qr"></div>
-
-<!-- ÜST SATIR -->
-<div class="row">
-    <div class="box small" style="width:90mm; height:12mm;">ANTAKYA BELEDİYESİ</div>
-    <div class="box small" style="flex:1; height:12mm;">Yılı: <input value="2026"></div>
-</div>
-
-<div class="row">
-    <div class="box small" style="width:90mm; height:12mm;">HATAY - ANTAKYA</div>
-    <div class="box small right" style="flex:1; height:12mm;">Tarih: <input value="21.01.2026"></div>
-</div>
-
-<!-- TC -->
-<div class="row">
-    <div class="box center small" style="width:20mm; height:10mm;">1</div>
-    <div class="box small" style="flex:1; height:10mm;">T.C Kimlik No:
-        <input value="21790984820">
-    </div>
-</div>
-
-<!-- SİCİL -->
-<div class="row">
-    <div class="box center small" style="width:20mm; height:10mm;">3</div>
-    <div class="box small" style="flex:1; height:10mm;">Emlak Sicil No:
-        <input value="40771">
-    </div>
-</div>
-
-<!-- AD -->
-<div class="row">
-    <div class="box center small" style="width:20mm; height:10mm;">5</div>
-    <div class="box small" style="flex:1; height:10mm;">Soyadı:
-        <input value="SAYIN">
-    </div>
-</div>
-
-<div class="row">
-    <div class="box center small" style="width:20mm; height:10mm;">6</div>
-    <div class="box small" style="flex:1; height:10mm;">Adı:
-        <input value="SÜLEYMAN">
-    </div>
-</div>
-
-<!-- ADRES -->
-<div class="row">
-    <div class="box small" style="flex:1; height:10mm;">Mahalle: <input value="GÜNYAZI"></div>
-    <div class="box small" style="flex:1; height:10mm;">Cadde: <input value="KAMİL GÖRÜR"></div>
-</div>
-
-<!-- TABLO -->
-<table>
-<tr>
-    <th></th>
-    <th>1. Bina</th>
-    <th>2. Bina</th>
-</tr>
-
-<tr>
-    <td>Arsa Alanı</td>
-    <td><input value="720,55"></td>
-    <td><input value="720,55"></td>
-</tr>
-
-<tr>
-    <td>İnşaat Türü</td>
-    <td><input value="BETONARME"></td>
-    <td><input value="BETONARME"></td>
-</tr>
-
-<tr>
-    <td>İnşaat Sınıfı</td>
-    <td><input value="3. SINIF"></td>
-    <td><input value="3. SINIF"></td>
-</tr>
-
-<tr>
-    <td>Kullanım</td>
-    <td><input value="MESKEN"></td>
-    <td><input value="MESKEN"></td>
-</tr>
-
-<tr>
-    <td>Vergi Değeri</td>
-    <td><input value="361.201,39"></td>
-    <td><input value="361.201,39"></td>
-</tr>
-
-</table>
-
-<br>
-
-<div class="row">
-    <div class="box small" style="flex:1; height:10mm;">Düzenleyen: <input value="ALİYE AKINCI"></div>
-</div>
-
-<div class="row">
-    <div class="box small" style="flex:1; height:10mm;">Ünvan: <input value="ŞEF"></div>
-</div>
-
-</div>
+    <main>
+        <div class="hero-section">
+            <h1>Sistem Arayüzü Başlatıldı</h1>
+            <p>GitHub üzerinden geliştirmeye devam edeceğimiz web sitesi iskeleti hazır.</p>
+        </div>
+    </main>
 
 </body>
 </html>
