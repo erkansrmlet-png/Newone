@@ -3,107 +3,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E-Hizmet Sayfası</title>
+<title>Samandağ Belediyesi - E-Hizmet</title>
 
 <style>
 body{
 margin:0;
-font-family:Arial, sans-serif;
-background:#f2f2f2;
+font-family:"Segoe UI", Arial, sans-serif;
+background:#eef1f5;
 }
 
 /* HEADER */
 .header{
-background:#3f4554;
-color:white;
+background:#3e4453;
+height:70px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:15px 20px;
+padding:0 25px;
+color:#fff;
 }
 
-.logo{
+.logo-area{
 display:flex;
 align-items:center;
-gap:10px;
-font-weight:bold;
-font-size:18px;
+gap:15px;
+font-size:20px;
+font-weight:600;
+}
+
+.logo-circle{
+width:45px;
+height:45px;
+border-radius:50%;
+background:linear-gradient(135deg,#2cc4b6,#1e8f87);
 }
 
 .header-right{
 display:flex;
 align-items:center;
-gap:15px;
+gap:20px;
 }
 
-.btn{
-padding:8px 14px;
+.ed-btn{
+background:#e74c3c;
 border:none;
+color:#fff;
+padding:8px 14px;
 border-radius:4px;
 cursor:pointer;
-}
-
-.btn-red{
-background:#e74c3c;
-color:white;
+font-size:13px;
 }
 
 /* LAYOUT */
-.container{
+.main{
 display:flex;
 }
 
 /* SIDEBAR */
 .sidebar{
 width:260px;
-background:#ffffff;
-height:calc(100vh - 60px);
+background:#fff;
+height:calc(100vh - 70px);
 border-right:1px solid #ddd;
 padding-top:10px;
 }
 
-.menu-item{
+.menu{
+list-style:none;
+padding:0;
+margin:0;
+}
+
+.menu li{
 padding:12px 20px;
+font-size:14px;
 color:#555;
+display:flex;
+align-items:center;
+justify-content:space-between;
 cursor:pointer;
 }
 
-.menu-item:hover{
-background:#f0f0f0;
+.menu li:hover{
+background:#f4f6f9;
 }
 
-.menu-active{
-background:#e9ecef;
-border-left:4px solid #3498db;
+.menu .active{
+background:#e9edf3;
+border-left:4px solid #3aa0ff;
+}
+
+.menu small{
+opacity:0.5;
 }
 
 /* CONTENT */
 .content{
 flex:1;
-padding:20px;
+padding:25px;
+}
+
+.page-title{
+font-size:18px;
+color:#6c757d;
+margin-bottom:15px;
 }
 
 .card{
-background:white;
-padding:20px;
+background:#fff;
 border-radius:6px;
-box-shadow:0 0 5px rgba(0,0,0,0.1);
-height:600px;
+box-shadow:0 2px 6px rgba(0,0,0,0.08);
+padding:20px;
+min-height:600px;
 }
 
-.title{
-font-size:20px;
-margin-bottom:15px;
-color:#555;
-}
-
-.btn-blue{
-background:#1abc9c;
-color:white;
-padding:10px 15px;
+.new-btn{
+background:#23b7a4;
 border:none;
+color:#fff;
+padding:10px 16px;
 border-radius:4px;
 cursor:pointer;
+font-size:14px;
+}
+
+.footer{
+position:fixed;
+bottom:5px;
+right:15px;
+font-size:12px;
+color:#777;
 }
 
 </style>
@@ -112,41 +141,50 @@ cursor:pointer;
 <body>
 
 <div class="header">
-    <div class="logo">
-        <div style="width:40px;height:40px;background:#1abc9c;border-radius:50%"></div>
-        SAMANDAĞ BELEDİYESİ - E-HİZMET SAYFASI
+    <div class="logo-area">
+        <div class="logo-circle"></div>
+        SAMANDAĞ BELEDİYESİ <span style="font-weight:400">E-HİZMET SAYFASI</span>
     </div>
 
     <div class="header-right">
-        <button class="btn btn-red">e-Devlet ile Giriş Yap</button>
+        <button class="ed-btn">e-Devlet ile Giriş Yap</button>
         <span>ÜYE GİRİŞİ</span>
     </div>
 </div>
 
-<div class="container">
+<div class="main">
 
     <div class="sidebar">
-        <div class="menu-item">Ana Sayfa</div>
-        <div class="menu-item">Borç Ödeme</div>
-        <div class="menu-item">Ödemelerim</div>
-        <div class="menu-item">Emlak Vergisi</div>
-        <div class="menu-item">Çevre Temizlik Vergisi</div>
-        <div class="menu-item">İlan Reklam Vergisi</div>
-        <div class="menu-item">Kira Sözleşmelerim</div>
-        <div class="menu-item">Sorgulama</div>
-        <div class="menu-item">Başvurular</div>
-        <div class="menu-item menu-active">Belge Doğrulama</div>
-        <div class="menu-item">Yapı Ruhsatı Ön Onayları</div>
+        <ul class="menu">
+            <li>Ana Sayfa</li>
+            <li>Borç Ödeme <small>🔒</small></li>
+            <li>Ödemelerim <small>🔒</small></li>
+            <li>Emlak Vergisi ▸</li>
+            <li>Çevre Temizlik Vergisi ▸</li>
+            <li>İlan Reklam Vergisi ▸</li>
+            <li>Kira Sözleşmelerim <small>🔒</small></li>
+            <li>Sorgulama</li>
+            <li>Başvurular <small>🔒</small></li>
+            <li class="active">Belge Doğrulama</li>
+            <li>Yapı Ruhsatı Ön Onayları</li>
+
+            <li style="margin-top:15px;font-weight:600;color:#3aa0ff">BAĞLANTILAR</li>
+            <li>Yapı Kontrol Sistemi</li>
+            <li>Personel Portalı</li>
+        </ul>
     </div>
 
     <div class="content">
+        <div class="page-title">BELGE DOĞRULAMA</div>
+
         <div class="card">
-            <div class="title">BELGE DOĞRULAMA</div>
-            <button class="btn-blue">← Yeni Sorgu</button>
+            <button class="new-btn">← Yeni Sorgu</button>
         </div>
     </div>
 
 </div>
+
+<div class="footer">SÜRÜM 2.0.887</div>
 
 </body>
 </html>
