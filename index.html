@@ -143,7 +143,6 @@ body {
     width: 97%;         
 }
 
-/* TURKUAZ BUTON */
 .new-btn {
     background: #17a2b8;
     border: none;
@@ -153,7 +152,15 @@ body {
     cursor: pointer;
     font-size: 13px;
     font-weight: 600;
-    margin-bottom: 15px;
+
+    /* --- KONUM AYARLARI --- */
+
+    display: block;       /* Hareket komutlarının düzgün çalışması için */
+    
+    margin-top: -15px;    /* YUKARI ALMAK İÇİN: Eksi (-) değer verin */
+    margin-left: -10px;   /* SOLA ALMAK İÇİN: Eksi (-) değer verin */
+    
+    margin-bottom: 15px;  /* Altındaki PDF alanı ile arasına mesafe koyar */
 }
 
 /* PDF ÖNİZLEME ALANI */
