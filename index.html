@@ -101,22 +101,24 @@ body {
 }
 
 .page-title {
-    font-size: 19px;      /* Büyüttük */
-    font-weight: 100;     /* İncelttik */
-    color: #888;
-    text-transform: uppercase;
-
-    /* --- KONUM AYARLARI --- */
-
-    /* 1. AŞAĞI ALMAK İÇİN: Üstten boşluk bırakır */
-    margin-top: 7px;     /* Bu sayıyı artırdıkça yazı aşağı iner */
-
-    /* 2. SOLA ALMAK İÇİN: */
-    /* Eğer yazıyı sayfanın en sol kenarına iyice yaklaştırmak istiyorsan eksi değer kullanmalısın */
-    margin-left: -10px;   /* Eksi (-) değer yazıyı SOLA çeker */
+    /* Yazı tipi ailesi */
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     
-    /* Not: Eğer yazı çok sağda kaldıysa ve sola yanaşmıyorsa, 
-       bulunduğu kapsayıcının (.content) padding değerini kontrol etmelisin. */
+    /* Boyut ve İnceltme */
+    font-size: 17px;          /* Görseldeki boyuta yakın bir değer */
+    font-weight: 500;         /* Ne çok kalın ne çok ince, tam kararında */
+    
+    /* Renk */
+    color: #6c757d;           /* Görseldeki o tatlı gri tonu */
+    
+    /* Harf Arası Boşluk (Görseldeki en belirgin özellik) */
+    letter-spacing: 1.5px;    /* Harflerin arasını görseldeki gibi açar */
+    
+    /* Konum Ayarları (Daha önce konuştuğumuz gibi) */
+    margin-top: 8px;         /* Aşağı almak için */
+    margin-left: -10px;       /* Sola çekmek için */
+    
+    text-transform: uppercase; /* Tüm harfleri büyük yapar */
 }
 
 .card {
