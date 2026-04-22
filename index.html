@@ -6,17 +6,15 @@
 <title>Samandağ Belediyesi - E-Hizmet</title>
 
 <style>
-/* GENEL AYARLAR */
 body {
     margin: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f2f5; /* Görseldeki hafif gri arka plan */
-    color: #444;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f0f2f5;
 }
 
 /* HEADER */
 .header {
-    background: #3d4453; /* Görseldeki koyu gri/mavi tonu */
+    background: #3d4453;
     height: 70px;
     display: flex;
     align-items: center;
@@ -24,19 +22,18 @@ body {
     padding: 0 20px;
     color: #fff;
     position: relative;
-    border-bottom: 2px solid #dee2e6;
 }
 
 .logo-area {
     position: relative;
     display: flex;
     align-items: center;
-    padding-left: 85px; /* Logo için bırakılan boşluk */
+    padding-left: 85px; 
     font-size: 16px;
     font-weight: 500;
 }
 
-/* LOGO - DOKUNULMADI */
+/* LOGO KONUMU - DOKUNULMADI */
 .logo-img {
     position: absolute;
     top: -35px;
@@ -48,8 +45,6 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    font-size: 13px;
-    font-weight: 600;
 }
 
 .ed-btn {
@@ -67,47 +62,19 @@ body {
     display: flex;
 }
 
-/* SIDEBAR - SOL MENÜ */
+/* SOL MENÜ (GÖRSEL ALANI) */
 .sidebar {
     width: 250px;
     background: #fff;
-    height: calc(100vh - 72px);
-    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
-    overflow-y: auto;
+    height: calc(100vh - 70px);
+    border-right: 1px solid #ddd;
+    overflow: hidden; /* Taşmaları önler */
 }
 
-.menu {
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-}
-
-.menu li {
-    padding: 12px 20px;
-    font-size: 13px;
-    color: #5a6268;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.menu li:hover {
-    background: #f8f9fa;
-    color: #3aa0ff;
-}
-
-.menu .active {
-    background: #ebf5ff;
-    color: #007bff;
-    font-weight: 600;
-    border-right: 4px solid #007bff;
-}
-
-.menu small {
-    font-size: 10px;
-    opacity: 0.6;
+.sidebar-img {
+    width: 100%;    /* Menü görselini genişliğe tam yayar */
+    height: auto;   /* Orantılı yükseklik */
+    display: block;
 }
 
 /* İÇERİK ALANI */
@@ -120,8 +87,7 @@ body {
     font-size: 15px;
     color: #888;
     margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-weight: 600;
 }
 
 .card {
@@ -132,9 +98,8 @@ body {
     min-height: 80vh;
 }
 
-/* TURKUAZ BUTON (YENİ SORGU) */
 .new-btn {
-    background: #17a2b8; /* Görseldeki turkuaz renk */
+    background: #17a2b8;
     border: none;
     color: #fff;
     padding: 8px 16px;
@@ -142,16 +107,8 @@ body {
     cursor: pointer;
     font-size: 13px;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 
-.new-btn:hover {
-    background: #138496;
-}
-
-/* FOOTER */
 .footer {
     position: fixed;
     bottom: 5px;
@@ -159,7 +116,6 @@ body {
     font-size: 11px;
     color: #999;
 }
-
 </style>
 </head>
 
@@ -173,44 +129,22 @@ body {
 
     <div class="header-right">
         <button class="ed-btn">e-Devlet ile Giriş Yap</button>
-        <span style="cursor:pointer">➔ ÜYE GİRİŞİ</span>
+        <span style="font-size: 13px; cursor:pointer; font-weight:600;">➔ ÜYE GİRİŞİ</span>
     </div>
 </div>
 
 <div class="main">
-
     <div class="sidebar">
-        <ul class="menu">
-            <li>🏠 Ana Sayfa</li>
-            <li>Borç Ödeme <small>🔒</small></li>
-            <li>Ödemelerim <small>🔒</small></li>
-            <li>Emlak Vergisi <span>‹</span></li>
-            <li>Çevre Temizlik Vergisi <span>‹</span></li>
-            <li>İlan Reklam Vergisi <span>‹</span></li>
-            <li>Kira Sözleşmelerim <small>🔒</small></li>
-            <li>Sorgulama</li>
-            <li>Başvurular <small>🔒</small></li>
-            <li class="active">Belge Doğrulama</li>
-            <li>Yapı Ruhsatı Ön Onayları</li>
-
-            <li style="margin-top:20px; font-size:11px; font-weight:700; color:#007bff; letter-spacing:1px;">🔗 BAĞLANTILAR</li>
-            <li>Yapı Kontrol Sistemi</li>
-            <li>Personel Portalı</li>
-        </ul>
+        <img src="sol_menu.png" alt="Menü" class="sidebar-img">
     </div>
 
     <div class="content">
         <div class="page-title">BELGE DOĞRULAMA</div>
-
         <div class="card">
             <button class="new-btn">✚ Yeni Sorgu</button>
-            
-            <div style="margin-top:20px; border:1px solid #ddd; background:#fdfdfd; height:500px; display:flex; align-items:center; justify-content:center; color:#ccc;">
-                Belge Görüntüleme Alanı
-            </div>
+            <div style="margin-top:20px; border:1px solid #eee; height:500px; background:#fcfcfc;"></div>
         </div>
     </div>
-
 </div>
 
 <div class="footer">SÜRÜM 2.0.888</div>
