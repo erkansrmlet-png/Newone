@@ -14,29 +14,6 @@ body {
     color: #444;
 }
     
-/* Yeni Buton Görseli Ayarları */
-.y-buton-img {
-    cursor: pointer;
-    display: block;
-    
-    /* BOYUT AYARI: Görsel çok büyük gelirse buradan küçültebilirsin */
-    width: 140px; 
-    height: auto;
-
-    /* KONUM AYARLARI: Buradan yukarı-aşağı ve sağ-sol yapabilirsin */
-    position: relative;
-    top: -20px;    /* Eksi (-) yukarı çeker, artı (+) aşağı indirir */
-    left: -15px;   /* Eksi (-) sola çeker, artı (+) sağa iter */
-    
-    margin-bottom: 5px; /* Altındaki PDF ile çok yapışmaması için */
-}
-
-/* Hover efekti (Üzerine gelince hafif parlama) */
-.y-buton-img:hover {
-    opacity: 0.9;
-    filter: brightness(1.1);
-}
-    
 /* HEADER */
 .header {
     background: #3d4453;
@@ -207,14 +184,6 @@ body {
 </head>
 
 <body>
-
-<div class="card">
-    <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img">
-    
-    <div class="pdf-container">
-        <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
-    </div>
-</div>
 
 <div class="header">
     <div class="logo-area">
