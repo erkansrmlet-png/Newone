@@ -64,7 +64,7 @@ body {
 .main {
     display: flex;
     padding: 20px; 
-    gap: 25px;     
+    gap: 25px;      
     align-items: flex-start; 
 }
 
@@ -76,21 +76,15 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
     border: 1px solid #e0e4e8;
     overflow: hidden;
-
-    /* --- HAREKET ETTİRME KOMUTLARI --- */
     
-    margin-top: 3px;   /* YUKARI ALMAK İÇİN: Eksi (-) değer ver. (Örn: -10px, -20px) */
-    /* margin-top: 20px; */ /* AŞAĞI ALMAK İÇİN: Artı (+) değer ver. */
-
-    margin-left: -2px;  /* SAĞA ALMAK İÇİN: Artı (+) değer ver. */
-    /* margin-left: -10px; */ /* SOLA ALMAK İÇİN: Eksi (-) değer ver. */
+    margin-top: 3px;   
+    margin-left: -2px; 
 }
 
 .sidebar-img {
     width: 100%;
     display: block;
     position: relative;
-    /* GÖRSELİ BURADAN OYNATABİLİRSİN: */
     top: 0px;  
     left: 0px; 
 }
@@ -101,24 +95,14 @@ body {
 }
 
 .page-title {
-    
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    
-    /* Boyut ve İnceltme */
-    font-size: 30px;          /* Görseldeki boyuta yakın bir değer */
-    font-weight: 500;         /* Ne çok kalın ne çok ince, tam kararında */
-    
-    /* Renk */
-    color: #6c757d;           /* Görseldeki o tatlı gri tonu */
-    
-    /* Harf Arası Boşluk (Görseldeki en belirgin özellik) */
-    letter-spacing: 1.5px;    /* Harflerin arasını görseldeki gibi açar */
-    
-    /* Konum Ayarları (Daha önce konuştuğumuz gibi) */
-    margin-top: 8px;         /* Aşağı almak için */
-    margin-left: -6px;       /* Sola çekmek için */
-    
-    text-transform: uppercase; /* Tüm harfleri büyük yapar */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    font-size: 30px; 
+    font-weight: 500; 
+    color: #6c757d; 
+    letter-spacing: 1.5px; 
+    margin-top: 8px; 
+    margin-left: -6px; 
+    text-transform: uppercase;
 }
 
 .card {
@@ -128,39 +112,26 @@ body {
     padding: 20px;
     min-height: 700px;
     border: 1px solid #eee;
-
-    /* --- HAREKET AYARLARI --- */
-
-    /* 1. AŞAĞI ALMAK İÇİN: Üst boşluğu artırır */
-    margin-top: 8px;    /* Bu sayıyı artırdıkça beyaz sayfa aşağı iner */
-
-    /* 2. SOLA ÇEKMEK İÇİN: */
-    /* Sayfa genelde sağa yaslı duruyorsa eksi değerle sola çekebilirsin */
-    margin-left: -7px;  /* Eksi (-) değer sola çeker, artı (+) değer sağa iter */
-    
-    /* 3. GENİŞLİĞİ KORUMAK İÇİN (Opsiyonel): */
-    /* Sola çekince sağda boşluk kalırsa genişliği buradan artırabilirsin */
-    width: 97%;         
+    margin-top: 8px; 
+    margin-left: -7px; 
+    width: 97%;          
 }
 
-.new-btn {
-    background: #17a2b8;
-    border: none;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 4px;
+/* PNG BUTON YENİ AYARLARI */
+.y-buton-img {
     cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-
-    /* --- KONUM AYARLARI --- */
-
-    display: block;       /* Hareket komutlarının düzgün çalışması için */
+    display: block;
     
-    margin-top: -15px;    /* YUKARI ALMAK İÇİN: Eksi (-) değer verin */
-    margin-left: -10px;   /* SOLA ALMAK İÇİN: Eksi (-) değer verin */
+    /* Boyut Ayarı */
+    width: 140px; 
+    height: auto;
+
+    /* Konum Ayarları - İstediğin gibi yukarı ve sola aldık */
+    position: relative;
+    top: -15px;    /* Yukarı çekmek için */
+    left: -10px;   /* Sola çekmek için */
     
-    margin-bottom: 15px;  /* Altındaki PDF alanı ile arasına mesafe koyar */
+    margin-bottom: 5px; 
 }
 
 /* PDF ÖNİZLEME ALANI */
@@ -205,7 +176,7 @@ body {
     <div class="content">
         <div class="page-title">BELGE DOĞRULAMA</div>
         <div class="card">
-            <button class="new-btn">✚ Yeni Sorgu</button>
+            <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img">
             
             <div class="pdf-container">
                 <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
