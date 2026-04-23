@@ -32,29 +32,30 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    /* İki logo yan yana geleceği için yazı boşluğunu artırdık */
-    padding-left: 155px; 
+    /* İki logo için boşluğu biraz daha açtık */
+    padding-left: 175px; 
     font-size: 16px;
     font-weight: 500;
 }
 
-/* ANA LOGO */
+/* ANA LOGO (PİN) */
 .logo-img, .logo3-img {
     position: absolute;
     top: -27px;
     left: -20px;
     height: 78px;
-    z-index: 10; /* Diğerlerinden üstte olması için */
+    z-index: 100; /* Katman sırası */
 }
 
-/* ARKA LOGO - Logo.png'nin hemen bitimine eklendi */
+/* ARKA LOGO - EN ÖNE ALINDI VE KONUMU SAĞA KAYDIRILDI */
 .arkalogo-img {
     position: absolute;
     top: -27px;
-    left: 55px; /* logo.png pin bitiminden başlaması için ayarlandı */
+    left: 65px; /* logo.png pin bitiminden başlaması için mesafe artırıldı */
     height: 78px;
     width: auto;
-    z-index: 5; /* logo.png'nin arkasında/hizasında kalması için */
+    z-index: 999; /* En öne çıkması için çok yüksek bir değer verildi */
+    display: block !important; /* Görünürlüğü garantilemek için */
 }
 
 .logo3-img { display: none; }
@@ -116,7 +117,6 @@ body {
     align-items: flex-start; 
 }
 
-/* SIDEBAR (SÜRGÜLÜ MENÜ) */
 .sidebar {
     width: 236px; 
     background: #fff;
