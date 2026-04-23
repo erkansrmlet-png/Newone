@@ -33,7 +33,8 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    padding-left: 85px; 
+    /* Yazının logolardan sonra başlaması için boşluğu artırdık */
+    padding-left: 145px; 
     font-size: 16px;
     font-weight: 500;
 }
@@ -43,7 +44,17 @@ body {
     top: -27px;
     left: -20px;
     height: 78px;
-    z-index: 1;
+    z-index: 2;
+}
+
+/* YENİ EKLENEN ARKA LOGO */
+.arkalogo-img {
+    position: absolute;
+    top: -27px;
+    /* logo.png'nin hemen bittiği yere yakın konumlandırdık */
+    left: 45px; 
+    height: 78px;
+    z-index: 1; /* Ana logonun hafif altında veya hizasında kalması için */
 }
 
 .logo3-img { display: none; }
@@ -185,7 +196,7 @@ body {
 
 /* --- 1000PX MEDYA SORGUSU --- */
 @media (max-width: 1000px) {
-    .logo-img, .sidebar, .header-right .extra-logos-right {
+    .logo-img, .arkalogo-img, .sidebar, .header-right .extra-logos-right {
         display: none !important;
     }
     .logo3-img { display: block !important; }
@@ -209,6 +220,8 @@ body {
 <div class="header">
     <div class="logo-area">
         <img src="logo.png" class="logo-img">
+        <img src="arkalogo.png" class="arkalogo-img">
+        
         <img src="logo3.png" class="logo3-img">
         <span>SAMANDAĞ BELEDİYESİ</span>
     </div>
