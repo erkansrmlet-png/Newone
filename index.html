@@ -129,12 +129,15 @@ body {
     margin-bottom: 5px; 
 }
 
-/* AYIRICI BAR (YENİ EKLENDİ) */
 .separator-bar {
     height: 1px;
-    background-color: #e9ecef; /* Hafif gri bar rengi */
-    width: calc(95% + 40px); /* Kartın paddingini nötrlemek için */
-    margin-left: -20px; /* Kartın içine tam oturması için sola kaydırma */
+    background-color: #e9ecef; 
+    
+    /* --- BURAYI DEĞİŞTİR --- */
+    width: 98%;        /* Genişliği %100 yap (kartın içindeki boşluğa uyar) */
+    margin-left: 0;     /* Eksi değeri sıfırla */
+    
+    /* Üst ve alt boşluk ayarı */
     margin-top: 5px;
     margin-bottom: 20px;
 }
