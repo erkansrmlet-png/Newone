@@ -26,7 +26,6 @@ body {
     color: #fff;
     position: relative;
     z-index: 1000;
-    overflow: hidden; 
 }
 
 .logo-area {
@@ -104,6 +103,7 @@ body {
     align-items: flex-start; 
 }
 
+/* SIDEBAR (SÜRGÜLÜ MENÜ İÇİN GÜNCELLENDİ) */
 .sidebar {
     width: 236px; 
     background: #fff;
@@ -111,6 +111,7 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
     border: 1px solid #e0e4e8;
     overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Sürgü efekti */
 }
 
 .sidebar-img { width: 100%; display: block; }
@@ -168,7 +169,6 @@ body {
     overflow: hidden;
 }
 
-/* MOBİL UYARI METNİ (600px Altı) */
 .mobile-pdf-warning {
     display: none;
     font-family: "Segoe UI", Tahoma, sans-serif;
@@ -178,10 +178,7 @@ body {
     padding: 20px 0;
 }
 
-.mobile-pdf-warning a {
-    color: #337ab7;
-    text-decoration: none;
-}
+.mobile-pdf-warning a { color: #337ab7; text-decoration: none; }
 
 .footer {
     position: fixed;
@@ -193,28 +190,38 @@ body {
 
 /* --- 1000PX MEDYA SORGUSU --- */
 @media (max-width: 1000px) {
-    .logo-img, .logo2-img, .sidebar, .header-right .ed-btn, .header-right span {
+    .logo-img, .logo2-img, .header-right .ed-btn, .header-right span {
         display: none !important;
     }
+    
     .logo3-img { display: block !important; }
+    
+    /* Sidebar başlangıçta kapalı (max-height: 0) */
+    .sidebar {
+        width: 100%;
+        max-height: 0;
+        margin-left: 0;
+        margin-bottom: 15px;
+        box-shadow: none;
+    }
+
+    /* Menüye basınca bu sınıf eklenecek */
+    .sidebar.open {
+        max-height: 500px; /* Menü içeriğine göre artırılabilir */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
     .header-right { padding-right: 0; }
     .mobile-menu-btn { display: flex !important; }
-    .main { padding: 10px; }
+    .main { padding: 10px; flex-direction: column; }
     .card { width: 100%; margin-left: 0; padding: 15px; }
-    .pdf-container { height: 75vh; }
 }
 
 /* --- 600PX MEDYA SORGUSU --- */
 @media (max-width: 600px) {
-    .pdf-container {
-        display: none !important;
-    }
-    .mobile-pdf-warning {
-        display: block !important;
-    }
-    .card {
-        min-height: auto;
-    }
+    .pdf-container { display: none !important; }
+    .mobile-pdf-warning { display: block !important; }
+    .card { min-height: auto; }
 }
 </style>
 </head>
@@ -234,7 +241,7 @@ body {
         <img src="logo2.png" alt="Logo 2" class="logo2-img">
     </div>
 
-    <div class="mobile-menu-btn">
+    <div class="mobile-menu-btn" onclick="toggleMenu()">
         <span></span>
         <span></span>
         <span></span>
@@ -242,7 +249,7 @@ body {
 </div>
 
 <div class="main">
-    <div class="sidebar">
+    <div class="sidebar" id="mobileSidebar">
         <img src="sol_menu.png" alt="Menü" class="sidebar-img">
     </div>
 
@@ -264,6 +271,13 @@ body {
 </div>
 
 <div class="footer">SÜRÜM 2.0.888</div>
+
+<script>
+function toggleMenu() {
+    const sidebar = document.getElementById('mobileSidebar');
+    sidebar.classList.toggle('open');
+}
+</script>
 
 </body>
 </html>
