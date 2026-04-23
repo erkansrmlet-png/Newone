@@ -32,10 +32,11 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    /* İki logo için boşluğu biraz daha açtık */
-    padding-left: 175px; 
+    /* Yazının logolardan çok daha sonra başlaması için boşluğu 230px'e çıkardım */
+    padding-left: 230px; 
     font-size: 16px;
     font-weight: 500;
+    min-width: 400px; /* Logoların sağa gitmesi için alan açtık */
 }
 
 /* ANA LOGO (PİN) */
@@ -44,18 +45,19 @@ body {
     top: -27px;
     left: -20px;
     height: 78px;
-    z-index: 100; /* Katman sırası */
+    z-index: 100;
 }
 
-/* ARKA LOGO - EN ÖNE ALINDI VE KONUMU SAĞA KAYDIRILDI */
+/* ARKA LOGO - SAĞA GİTMESİNE İZİN VERİLDİ */
 .arkalogo-img {
     position: absolute;
     top: -27px;
-    left: 100px; /* logo.png pin bitiminden başlaması için mesafe artırıldı */
+    /* Değeri artırarak istediğin kadar sağa çekebilirsin (Örn: 110px) */
+    left: 110px; 
     height: 78px;
     width: auto;
-    z-index: 999; /* En öne çıkması için çok yüksek bir değer verildi */
-    display: block !important; /* Görünürlüğü garantilemek için */
+    z-index: 999; /* En önde */
+    display: block !important;
 }
 
 .logo3-img { display: none; }
@@ -132,13 +134,10 @@ body {
 .content { flex: 1; min-width: 0; }
 
 .page-title {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    font-family: 'Inter', sans-serif;
     font-size: 18px; 
     font-weight: 350; 
     color: #6c757d; 
-    letter-spacing: 0.15px; 
-    margin-top: 8.5px; 
-    margin-left: -6px; 
     text-transform: uppercase;
 }
 
@@ -149,8 +148,6 @@ body {
     padding: 20px;
     min-height: 700px;
     border: 1px solid #eee;
-    margin-top: 8px; 
-    margin-left: -7px; 
     width: 97%;   
     box-sizing: border-box; 
 }
@@ -161,7 +158,6 @@ body {
     width: 111.5px; 
     position: relative;
     top: -7.8px; 
-    left: 1px; 
     margin-bottom: 5px; 
 }
 
@@ -182,57 +178,18 @@ body {
     overflow: hidden;
 }
 
-.mobile-pdf-warning {
-    display: none;
-    font-family: "Segoe UI", Tahoma, sans-serif;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #333;
-    padding: 20px 0;
-}
-
-.mobile-pdf-warning a { color: #337ab7; text-decoration: none; }
-
-.footer {
-    position: fixed;
-    bottom: 5px;
-    right: 15px;
-    font-size: 11px;
-    color: #999;
-}
-
 /* --- 1000PX MEDYA SORGUSU --- */
 @media (max-width: 1000px) {
     .logo-img, .arkalogo-img, .logo2-img, .header-right .ed-btn, .header-right span {
         display: none !important;
     }
-    
     .logo3-img { display: block !important; }
-    
-    .sidebar {
-        width: 100%;
-        max-height: 0;
-        margin-left: 0;
-        margin-bottom: 15px;
-        box-shadow: none;
-    }
-
-    .sidebar.open {
-        max-height: 500px; 
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
+    .sidebar { width: 100%; max-height: 0; box-shadow: none; }
+    .sidebar.open { max-height: 500px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     .header-right { padding-right: 0; }
     .mobile-menu-btn { display: flex !important; }
     .main { padding: 10px; flex-direction: column; }
-    .card { width: 100%; margin-left: 0; padding: 15px; }
-}
-
-/* --- 600PX MEDYA SORGUSU --- */
-@media (max-width: 600px) {
-    .pdf-container { display: none !important; }
-    .mobile-pdf-warning { display: block !important; }
-    .card { min-height: auto; }
+    .card { width: 100%; }
 }
 </style>
 </head>
@@ -242,7 +199,8 @@ body {
 <div class="header">
     <div class="logo-area">
         <img src="logo.png" class="logo-img">
-        <img src="arkalogo.png" class="arkalogo-img"> <img src="logo3.png" class="logo3-img">
+        <img src="arkalogo.png" class="arkalogo-img">
+        <img src="logo3.png" class="logo3-img">
         SAMANDAĞ BELEDİYESİ
     </div>
 
@@ -273,15 +231,11 @@ body {
             <div class="pdf-container">
                 <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
             </div>
-
-            <div class="mobile-pdf-warning">
-                This browser does not support inline PDFs. Please download the PDF to view it: <a href="Evrak.pdf" target="_blank">Download PDF</a>
-            </div>
         </div>
     </div>
 </div>
 
-<div class="footer">SÜRÜM 2.0.888</div>
+<div class="footer" style="position: fixed; bottom: 5px; right: 15px; font-size: 11px; color: #999;">SÜRÜM 2.0.888</div>
 
 <script>
 function toggleMenu() {
