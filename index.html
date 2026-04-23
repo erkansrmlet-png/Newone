@@ -32,11 +32,11 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    /* Yazının logolardan çok daha sonra başlaması için boşluğu 230px'e çıkardım */
-    padding-left: 230px; 
+    /* Yazının logolardan çok sonra başlaması için boşluk */
+    padding-left: 280px; 
     font-size: 16px;
     font-weight: 500;
-    min-width: 400px; /* Logoların sağa gitmesi için alan açtık */
+    flex-grow: 1; /* Alanı genişleterek logonun sağa gitmesine izin verir */
 }
 
 /* ANA LOGO (PİN) */
@@ -48,15 +48,15 @@ body {
     z-index: 100;
 }
 
-/* ARKA LOGO - SAĞA GİTMESİNE İZİN VERİLDİ */
+/* ARKA LOGO - SAĞA GİTMESİ İÇİN KISITLAMALAR KALDIRILDI */
 .arkalogo-img {
     position: absolute;
     top: -27px;
-    /* Değeri artırarak istediğin kadar sağa çekebilirsin (Örn: 110px) */
-    left: 110px; 
+    /* Buradaki değeri artırarak (150, 180, 200...) istediğin kadar sağa itebilirsin */
+    left: 150px; 
     height: 78px;
     width: auto;
-    z-index: 999; /* En önde */
+    z-index: 999; 
     display: block !important;
 }
 
@@ -178,7 +178,7 @@ body {
     overflow: hidden;
 }
 
-/* --- 1000PX MEDYA SORGUSU --- */
+/* --- MEDYA SORGULARI --- */
 @media (max-width: 1000px) {
     .logo-img, .arkalogo-img, .logo2-img, .header-right .ed-btn, .header-right span {
         display: none !important;
