@@ -63,7 +63,7 @@ body {
     z-index: 1001;       
 }
 
-/* MOBİL MENÜ BUTONU (LOGO3 ÜZERİNDE SAĞDA) */
+/* MOBİL MENÜ BUTONU (SAĞA YASLI VE SOLUK) */
 .mobile-menu-btn {
     display: none;
     flex-direction: column;
@@ -73,17 +73,16 @@ body {
     width: 30px;
     height: 30px;
     position: absolute; 
-    /* Konum Ayarı: Logo3'ün sağ tarafına denk gelecek şekilde */
-    left: 65px;         
-    top: 20px;          
+    right: 15px;         /* En sağa yasladık */
+    top: 22px;          
     z-index: 9999;      
 }
 
 .mobile-menu-btn span {
     display: block;
-    width: 22px;
+    width: 25px;
     height: 3px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.5); /* Rengi %50 soluklaştırdık */
     border-radius: 2px;
 }
 
@@ -211,18 +210,18 @@ body {
         <img src="logo.png" class="logo-img">
         <img src="logo3.png" class="logo3-img">
         SAMANDAĞ BELEDİYESİ
-        
-        <div class="mobile-menu-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
     </div>
 
     <div class="header-right">
         <button class="ed-btn">e-Devlet ile Giriş Yap</button>
         <span style="font-size:13px; cursor:pointer; font-weight:600;">➔ ÜYE GİRİŞİ</span>
         <img src="logo2.png" alt="Logo 2" class="logo2-img">
+    </div>
+
+    <div class="mobile-menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 </div>
 
