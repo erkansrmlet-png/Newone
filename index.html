@@ -121,17 +121,22 @@ body {
 .y-buton-img {
     cursor: pointer;
     display: block;
-    
-    /* Boyut Ayarı */
     width: 111.5px; 
     height: auto;
-
-    /* Konum Ayarları - İstediğin gibi yukarı ve sola aldık */
     position: relative;
-    top: -7.8px;    /* Yukarı çekmek için */
-    left: 1px;   /* Sola çekmek için */
-    
+    top: -7.8px; 
+    left: 1px; 
     margin-bottom: 5px; 
+}
+
+/* AYIRICI BAR (YENİ EKLENDİ) */
+.separator-bar {
+    height: 1px;
+    background-color: #e9ecef; /* Hafif gri bar rengi */
+    width: calc(100% + 40px); /* Kartın paddingini nötrlemek için */
+    margin-left: -20px; /* Kartın içine tam oturması için sola kaydırma */
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 /* PDF ÖNİZLEME ALANI */
@@ -177,6 +182,8 @@ body {
         <div class="page-title">BELGE DOĞRULAMA</div>
         <div class="card">
             <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img">
+            
+            <div class="separator-bar"></div>
             
             <div class="pdf-container">
                 <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
