@@ -21,7 +21,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 0 0 20px; /* Sağ padding'i 0 yaptık ki logo yapışsın */
     color: #fff;
     position: relative;
     z-index: 100;
@@ -48,6 +48,14 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
+    height: 100%; /* Logonun tam dikey oturması için */
+}
+
+/* YENİ EKLENEN SAĞ LOGO AYARI */
+.logo2-img {
+    height: 70px; /* Header yüksekliği ile aynı */
+    width: auto;
+    display: block;
 }
 
 .ed-btn {
@@ -129,15 +137,12 @@ body {
     margin-bottom: 5px; 
 }
 
+/* AYIRICI BAR */
 .separator-bar {
     height: 1px;
     background-color: #e9ecef; 
-    
-    /* --- BURAYI DEĞİŞTİR --- */
-    width: 100%;        /* Genişliği %100 yap (kartın içindeki boşluğa uyar) */
-    margin-left: 0;     /* Eksi değeri sıfırla */
-    
-    /* Üst ve alt boşluk ayarı */
+    width: calc(100% + 40px); 
+    margin-left: -20px; 
     margin-top: 5px;
     margin-bottom: 20px;
 }
@@ -167,12 +172,13 @@ body {
 <div class="header">
     <div class="logo-area">
         <img src="logo.png" class="logo-img">
-        SAMANDAĞ BELEDİYESİ <span style="margin-left:10px; font-weight:300; opacity:0.9;">
+        SAMANDAĞ BELEDİYESİ <span style="margin-left:10px; font-weight:300; opacity:0.9;"></span>
     </div>
 
     <div class="header-right">
         <button class="ed-btn">e-Devlet ile Giriş Yap</button>
         <span style="font-size:13px; cursor:pointer; font-weight:600;">➔ ÜYE GİRİŞİ</span>
+        <img src="logo2.png" alt="Logo 2" class="logo2-img">
     </div>
 </div>
 
@@ -185,9 +191,7 @@ body {
         <div class="page-title">BELGE DOĞRULAMA</div>
         <div class="card">
             <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img">
-            
             <div class="separator-bar"></div>
-            
             <div class="pdf-container">
                 <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
             </div>
