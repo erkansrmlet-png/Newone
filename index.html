@@ -43,6 +43,22 @@ body {
     top: -27px;
     left: -20px;
     height: 78px;
+    z-index: 1; /* Temel katman */
+}
+
+/* YENİ EKLENEN DOSYALARIN STİLLERİ */
+.extra-logos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 140px; /* logo.png'nin yanına itmek için */
+    z-index: 10; /* Logonun üstünde görünmesi için */
+}
+
+.extra-logos img {
+    height: 35px; /* Boyutu ihtiyaca göre buradan değiştirebilirsin */
+    width: auto;
+    cursor: pointer;
 }
 
 .logo3-img { display: none; }
@@ -168,7 +184,7 @@ body {
     overflow: hidden;
 }
 
-/* MOBİL UYARI METNİ (600px Altı) */
+/* MOBİL UYARI METNİ */
 .mobile-pdf-warning {
     display: none;
     font-family: "Segoe UI", Tahoma, sans-serif;
@@ -193,7 +209,7 @@ body {
 
 /* --- 1000PX MEDYA SORGUSU --- */
 @media (max-width: 1000px) {
-    .logo-img, .logo2-img, .sidebar, .header-right .ed-btn, .header-right span {
+    .logo-img, .logo2-img, .sidebar, .header-right .ed-btn, .header-right span, .extra-logos {
         display: none !important;
     }
     .logo3-img { display: block !important; }
@@ -225,7 +241,13 @@ body {
     <div class="logo-area">
         <img src="logo.png" class="logo-img">
         <img src="logo3.png" class="logo3-img">
-        SAMANDAĞ BELEDİYESİ
+        
+        <div class="extra-logos">
+            <img src="devlet.png" alt="E-Devlet">
+            <img src="uyegirisi.png" alt="Üye Girişi">
+        </div>
+        
+        <span style="margin-left: 15px;">SAMANDAĞ BELEDİYESİ</span>
     </div>
 
     <div class="header-right">
