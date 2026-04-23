@@ -168,16 +168,19 @@ body {
     overflow: hidden;
 }
 
-/* EKSTRA METİN (600px altında görünecek) */
-.mobile-text {
+/* MOBİL UYARI METNİ (600px Altı) */
+.mobile-pdf-warning {
     display: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-    color: #6c757d;
-    text-align: left;
-    margin-top: 40px;
-    letter-spacing: 1px;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    padding: 20px 0;
+}
+
+.mobile-pdf-warning a {
+    color: #337ab7;
+    text-decoration: none;
 }
 
 .footer {
@@ -201,17 +204,16 @@ body {
     .pdf-container { height: 75vh; }
 }
 
-/* --- 600PX MEDYA SORGUSU (YENİ) --- */
+/* --- 600PX MEDYA SORGUSU --- */
 @media (max-width: 600px) {
     .pdf-container {
-        display: none !important; /* Evrağı kaldır */
+        display: none !important;
     }
-    .mobile-text {
-        display: block !important; /* Yazıyı göster */
+    .mobile-pdf-warning {
+        display: block !important;
     }
     .card {
         min-height: auto;
-        padding-bottom: 50px;
     }
 }
 </style>
@@ -254,7 +256,9 @@ body {
                 <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
             </div>
 
-            <div class="mobile-text">BELGE DOĞRULAMA</div>
+            <div class="mobile-pdf-warning">
+                This browser does not support inline PDFs. Please download the PDF to view it: <a href="Evrak.pdf" target="_blank">Download PDF</a>
+            </div>
         </div>
     </div>
 </div>
