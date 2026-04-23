@@ -110,7 +110,7 @@ body {
     margin-left: -6px; 
 }
 
-/* KART VE ÇERÇEVE - ORANTILI DÜZENLEME */
+/* KART (BEYAZ ÇERÇEVE) - EKRANA SIĞMA AYARI YAPILDI */
 .card {
     background: #fff;
     border-radius: 4px;
@@ -119,11 +119,11 @@ body {
     min-height: 700px;
     border: 1px solid #eee;
     margin-top: 8px; 
-    margin-left: -7px; 
+    margin-left: -7px; /* Eski yerinde */
     width: 97%;       
-    box-sizing: border-box; 
-    display: flex;
-    flex-direction: column;
+    max-width: calc(100% + 7px); /* Taşmayı engelleyen kritik dokunuş */
+    box-sizing: border-box; /* Padding'in genişliğe dahil olmasını sağlar */
+    overflow: hidden;
 }
 
 .y-buton-img {
@@ -146,7 +146,7 @@ body {
 
 .pdf-container {
     width: 100%;
-    height: 650px; /* Bilgisayarda sabit yükseklik */
+    height: 650px;
     border: 1px solid #f0f0f0;
     border-radius: 4px;
     overflow: hidden;
@@ -187,7 +187,7 @@ body {
     border-radius: 2px;
 }
 
-/* --- MEDYA SORGULARI (ORANTILI KÜÇÜLME İÇİN) --- */
+/* MEDYA SORGULARI */
 @media (max-width: 1000px) {
     .logo-img, .arkalogo-img, .header-right button, .header-right span {
         display: none !important;
@@ -206,27 +206,22 @@ body {
     .sidebar.open { display: block; }
     .mobile-menu-btn { display: flex !important; }
 
+    /* Beyaz kartın mobilde taşmaması için hizalama */
     .card { 
         width: 100%; 
         margin-left: 0; 
-        min-height: auto;
+        max-width: 100%;
         padding: 15px; 
+        min-height: auto;
     }
     .separator-bar { width: calc(100% + 30px); margin-left: -15px; }
-    .pdf-container { height: 70vh; } /* Mobilde ekrana göre orantılı yükseklik */
+    .pdf-container { height: 60vh; }
 }
 
 @media (max-width: 600px) {
-    .pdf-container { 
-        display: none !important; /* Evrağı tamamen kaldır */
-    }
-    .mobile-text { 
-        display: block !important; /* Büyük yazıyı göster */
-    }
-    .card { 
-        padding-bottom: 60px; 
-    }
-    .page-title { display: none; } /* Üstteki küçük başlığı mobilde gizle */
+    .pdf-container { display: none !important; }
+    .mobile-text { display: block !important; }
+    .card { padding-bottom: 50px; }
 }
 </style>
 </head>
@@ -281,11 +276,7 @@ body {
 <script>
 function toggleMenu() {
     const sidebar = document.getElementById('mobileSidebar');
-    if(sidebar.style.display === "block") {
-        sidebar.style.display = "none";
-    } else {
-        sidebar.style.display = "block";
-    }
+    sidebar.style.display = (sidebar.style.display === "block") ? "none" : "block";
 }
 </script>
 
