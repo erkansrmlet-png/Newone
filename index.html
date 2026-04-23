@@ -197,6 +197,11 @@ body {
         display: block !important;
     }
 
+    /* Sol menüyü (sidebar) tamamen kaldır */
+    .sidebar {
+        display: none !important;
+    }
+
     /* Header içeriklerini gizle ve menüyü göster */
     .header-right .ed-btn, 
     .header-right span {
@@ -211,16 +216,19 @@ body {
         display: flex;
     }
     
-    /* Mobilde içerik genişliği ayarı */
+    /* İçerik alanını tam genişlik yap */
     .main {
-        flex-direction: column;
+        padding: 10px;
     }
-    .sidebar {
+    .content {
         width: 100%;
-        margin-left: 0;
     }
     .card {
-        width: 90vw;
+        width: calc(100% - 15px);
+        margin-left: 0;
+    }
+    .page-title {
+        margin-left: 5px;
     }
 }
 </style>
