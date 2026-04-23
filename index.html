@@ -63,7 +63,7 @@ body {
     z-index: 1001;       
 }
 
-/* MOBİL MENÜ BUTONU (SAĞA YASLI VE SOLUK) */
+/* MOBİL MENÜ BUTONU */
 .mobile-menu-btn {
     display: none;
     flex-direction: column;
@@ -73,7 +73,7 @@ body {
     width: 30px;
     height: 30px;
     position: absolute; 
-    right: 15px;         /* En sağa yasladık */
+    right: 15px;
     top: 22px;          
     z-index: 9999;      
 }
@@ -82,7 +82,7 @@ body {
     display: block;
     width: 25px;
     height: 3px;
-    background-color: rgba(255, 255, 255, 0.5); /* Rengi %50 soluklaştırdık */
+    background-color: rgba(255, 255, 255, 0.5); 
     border-radius: 2px;
 }
 
@@ -168,6 +168,18 @@ body {
     overflow: hidden;
 }
 
+/* EKSTRA METİN (600px altında görünecek) */
+.mobile-text {
+    display: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #6c757d;
+    text-align: left;
+    margin-top: 40px;
+    letter-spacing: 1px;
+}
+
 .footer {
     position: fixed;
     bottom: 5px;
@@ -181,24 +193,26 @@ body {
     .logo-img, .logo2-img, .sidebar, .header-right .ed-btn, .header-right span {
         display: none !important;
     }
-    
     .logo3-img { display: block !important; }
-    
     .header-right { padding-right: 0; }
-
-    .mobile-menu-btn {
-        display: flex !important; 
-    }
-    
+    .mobile-menu-btn { display: flex !important; }
     .main { padding: 10px; }
-    
-    .card {
-        width: 100%;
-        margin-left: 0;
-        padding: 15px;
-    }
-
+    .card { width: 100%; margin-left: 0; padding: 15px; }
     .pdf-container { height: 75vh; }
+}
+
+/* --- 600PX MEDYA SORGUSU (YENİ) --- */
+@media (max-width: 600px) {
+    .pdf-container {
+        display: none !important; /* Evrağı kaldır */
+    }
+    .mobile-text {
+        display: block !important; /* Yazıyı göster */
+    }
+    .card {
+        min-height: auto;
+        padding-bottom: 50px;
+    }
 }
 </style>
 </head>
@@ -235,9 +249,12 @@ body {
         <div class="card">
             <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img">
             <div class="separator-bar"></div>
+            
             <div class="pdf-container">
                 <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
             </div>
+
+            <div class="mobile-text">BELGE DOĞRULAMA</div>
         </div>
     </div>
 </div>
