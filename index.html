@@ -88,12 +88,12 @@ body {
 
 .sidebar {
     width: 236px; 
+    flex-shrink: 0;
     background: #fff;
     border-radius: 8px; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
     border: 1px solid #e0e4e8;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
 }
 
 .sidebar-img { width: 100%; display: block; }
@@ -110,7 +110,7 @@ body {
     margin-left: -6px; 
 }
 
-/* KART - DÜZELTİLDİ */
+/* KART VE ÇERÇEVE - ORANTILI DÜZENLEME */
 .card {
     background: #fff;
     border-radius: 4px;
@@ -121,8 +121,9 @@ body {
     margin-top: 8px; 
     margin-left: -7px; 
     width: 97%;       
-    max-width: calc(100% + 7px); /* Taşmayı önlemek için eklendi */
     box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
 }
 
 .y-buton-img {
@@ -141,23 +142,26 @@ body {
     margin-left: -20px; 
     margin-top: 5px;
     margin-bottom: 20px;
-    max-width: none; /* Çizginin kart içinde kalması için mobilde sıfırlanacak */
 }
 
 .pdf-container {
     width: 100%;
-    height: 650px;
+    height: 650px; /* Bilgisayarda sabit yükseklik */
     border: 1px solid #f0f0f0;
     border-radius: 4px;
     overflow: hidden;
 }
 
-.mobile-pdf-warning {
+/* 600PX ÖZEL YAZISI */
+.mobile-text {
     display: none;
-    font-family: "Segoe UI", sans-serif;
-    font-size: 15px;
-    color: #333;
-    padding: 20px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #6c757d;
+    text-align: left;
+    margin-top: 40px;
+    letter-spacing: 1px;
 }
 
 /* MOBİL BUTON */
@@ -183,7 +187,7 @@ body {
     border-radius: 2px;
 }
 
-/* --- MEDYA SORGULARI --- */
+/* --- MEDYA SORGULARI (ORANTILI KÜÇÜLME İÇİN) --- */
 @media (max-width: 1000px) {
     .logo-img, .arkalogo-img, .header-right button, .header-right span {
         display: none !important;
@@ -197,31 +201,32 @@ body {
         top: 22px;
     }
 
-    .sidebar { width: 100%; max-height: 0; box-shadow: none; margin-bottom: 10px; }
-    .sidebar.open { max-height: 1000px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-    .mobile-menu-btn { display: flex !important; }
     .main { padding: 10px; flex-direction: column; }
-    
-    /* Kart ve İçerik Mobilde Tam Sığsın */
+    .sidebar { width: 100%; margin-bottom: 15px; display: none; }
+    .sidebar.open { display: block; }
+    .mobile-menu-btn { display: flex !important; }
+
     .card { 
         width: 100%; 
         margin-left: 0; 
-        max-width: 100%;
+        min-height: auto;
         padding: 15px; 
     }
-    .separator-bar {
-        width: calc(100% + 30px);
-        margin-left: -15px;
-    }
-    .page-title {
-        margin-left: 0;
-    }
+    .separator-bar { width: calc(100% + 30px); margin-left: -15px; }
+    .pdf-container { height: 70vh; } /* Mobilde ekrana göre orantılı yükseklik */
 }
 
 @media (max-width: 600px) {
-    .pdf-container { display: none !important; }
-    .mobile-pdf-warning { display: block !important; }
-    .card { min-height: auto; }
+    .pdf-container { 
+        display: none !important; /* Evrağı tamamen kaldır */
+    }
+    .mobile-text { 
+        display: block !important; /* Büyük yazıyı göster */
+    }
+    .card { 
+        padding-bottom: 60px; 
+    }
+    .page-title { display: none; } /* Üstteki küçük başlığı mobilde gizle */
 }
 </style>
 </head>
@@ -266,9 +271,7 @@ body {
                 <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
             </div>
 
-            <div class="mobile-pdf-warning">
-                Bu tarayıcı PDF görüntülemeyi desteklemiyor. <a href="Evrak.pdf" target="_blank" style="color: #337ab7;">PDF İndir</a>
-            </div>
+            <div class="mobile-text">BELGE DOĞRULAMA</div>
         </div>
     </div>
 </div>
@@ -278,7 +281,11 @@ body {
 <script>
 function toggleMenu() {
     const sidebar = document.getElementById('mobileSidebar');
-    sidebar.classList.toggle('open');
+    if(sidebar.style.display === "block") {
+        sidebar.style.display = "none";
+    } else {
+        sidebar.style.display = "block";
+    }
 }
 </script>
 
