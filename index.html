@@ -110,7 +110,7 @@ body {
     margin-left: -6px; 
 }
 
-/* KART VE ÇERÇEVE - ORANTILI VE ESNEK */
+/* KART - ORANTILI KÜÇÜLME AYARI */
 .card {
     background: #fff;
     border-radius: 4px;
@@ -121,8 +121,8 @@ body {
     margin-top: 8px; 
     margin-left: -7px; 
     width: 97%;       
-    max-width: calc(100% + 7px); /* Taşmayı önleyen esneklik */
     box-sizing: border-box; 
+    transition: width 0.3s ease; /* Boyut değişimini yumuşatır */
 }
 
 .y-buton-img {
@@ -151,7 +151,7 @@ body {
     overflow: hidden;
 }
 
-/* MEDIA 600 ÖZEL METNİ */
+/* MEDIA 600 BÜYÜK YAZI */
 .mobile-text {
     display: none;
     font-family: 'Inter', sans-serif;
@@ -205,29 +205,35 @@ body {
     .sidebar.open { display: block; }
     .mobile-menu-btn { display: flex !important; }
 
+    /* Kartın ve başlığın mobilde zıplamasını önleyen esneklik */
     .card { 
-        width: 100%; 
-        margin-left: 0; 
-        max-width: 100%;
+        width: calc(100% - 10px); /* Kenarlarda az boşluk bırakır */
+        margin-left: 5px; 
         padding: 15px; 
         min-height: auto;
     }
-    .separator-bar { width: calc(100% + 30px); margin-left: -15px; }
+    .separator-bar { 
+        width: calc(100% + 30px); 
+        margin-left: -15px; 
+    }
+    .page-title { margin-left: 5px; }
 }
 
 @media (max-width: 600px) {
     .pdf-container { 
-        display: none !important; /* Evrağı gizle */
+        display: none !important; 
     }
     .mobile-text { 
-        display: block !important; /* Büyük metni göster */
+        display: block !important; /* Yazıyı geri ekledim */
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     .card { 
-        padding-bottom: 60px; 
+        padding-bottom: 80px; 
+        margin-left: 0;
+        width: 100%;
     }
-    .page-title { 
-        display: none; /* Üstteki küçük başlığı mobilde gizle */
-    }
+    .page-title { display: none; }
 }
 </style>
 </head>
