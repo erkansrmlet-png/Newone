@@ -38,41 +38,36 @@ body {
     font-weight: 500;
 }
 
-.logo-img {
+.logo-img, .logo3-img {
     position: absolute;
     top: -27px;
     left: -20px;
     height: 78px;
+    z-index: 1;
 }
+
+/* logo3 normalde gizli, mobilde (veya logo2 kalktığı için istenirse) görünür */
+.logo3-img { display: none; }
 
 .header-right {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding-right: 180px; /* logo2 için ayrılan alan */
+    padding-right: 10px; /* logo2 kalktığı için boşluğu azalttım */
 }
 
-/* SAĞA EKLENEN YENİ İKONLAR (E-DEVLET VE ÜYE GİRİŞİ) */
+/* SAĞA YASLANAN İKONLAR */
 .extra-logos-right {
     display: flex;
     align-items: center;
-    gap: 10px;
-    z-index: 1002; /* logo2'nin de üzerinde veya hizasında olması için */
+    gap: 12px;
+    z-index: 1002;
 }
 
 .extra-logos-right img {
-    height: 30px; 
+    height: 35px; 
     width: auto;
     cursor: pointer;
-}
-
-.logo2-img {
-    position: absolute; 
-    right: 0;           
-    top: -1.7px;             
-    height: 78px;       
-    width: auto;
-    z-index: 1001;       
 }
 
 /* MOBİL MENÜ BUTONU */
@@ -84,9 +79,6 @@ body {
     cursor: pointer;
     width: 30px;
     height: 30px;
-    position: absolute; 
-    right: 15px;
-    top: 22px;          
     z-index: 9999;      
 }
 
@@ -96,16 +88,6 @@ body {
     height: 3px;
     background-color: rgba(255, 255, 255, 0.5); 
     border-radius: 2px;
-}
-
-.ed-btn {
-    background: #e74c3c;
-    border: none;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
 }
 
 /* ANA YAPI */
@@ -180,7 +162,6 @@ body {
     overflow: hidden;
 }
 
-/* MOBİL UYARI METNİ */
 .mobile-pdf-warning {
     display: none;
     font-family: "Segoe UI", Tahoma, sans-serif;
@@ -188,11 +169,6 @@ body {
     line-height: 1.5;
     color: #333;
     padding: 20px 0;
-}
-
-.mobile-pdf-warning a {
-    color: #337ab7;
-    text-decoration: none;
 }
 
 .footer {
@@ -205,11 +181,10 @@ body {
 
 /* --- 1000PX MEDYA SORGUSU --- */
 @media (max-width: 1000px) {
-    .logo-img, .logo2-img, .sidebar, .header-right, .extra-logos-right {
+    .logo-img, .sidebar, .header-right {
         display: none !important;
     }
-    /* Logo3 kaldırıldığı için mobil başlık alanı düzenlendi */
-    .logo-area { padding-left: 0; }
+    .logo3-img { display: block !important; }
     .mobile-menu-btn { display: flex !important; }
     .main { padding: 10px; }
     .card { width: 100%; margin-left: 0; padding: 15px; }
@@ -230,24 +205,21 @@ body {
 <div class="header">
     <div class="logo-area">
         <img src="logo.png" class="logo-img">
+        <img src="logo3.png" class="logo3-img">
         <span>SAMANDAĞ BELEDİYESİ</span>
     </div>
 
     <div class="header-right">
         <div class="extra-logos-right">
-            <img src="devlet.png" alt="E-Devlet">
+            <img src="edevlet.png" alt="E-Devlet">
             <img src="uyegirisi.png" alt="Üye Girişi">
         </div>
         
-        <button class="ed-btn">e-Devlet ile Giriş Yap</button>
-        <span style="font-size:13px; cursor:pointer; font-weight:600;">➔ ÜYE GİRİŞİ</span>
-        <img src="logo2.png" alt="Logo 2" class="logo2-img">
-    </div>
-
-    <div class="mobile-menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
 </div>
 
