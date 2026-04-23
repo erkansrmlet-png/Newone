@@ -32,13 +32,14 @@ body {
     position: relative;
     display: flex;
     align-items: center;
+    /* Yazının logolardan çok sonra başlaması için boşluk */
     padding-left: 280px; 
     font-size: 16px;
     font-weight: 500;
-    flex-grow: 1;
+    flex-grow: 1; /* Alanı genişleterek logonun sağa gitmesine izin verir */
 }
 
-/* ANA LOGOLAR */
+/* ANA LOGO (PİN) */
 .logo-img, .logo3-img {
     position: absolute;
     top: -27px;
@@ -47,10 +48,12 @@ body {
     z-index: 100;
 }
 
+/* ARKA LOGO - SAĞA GİTMESİ İÇİN KISITLAMALAR KALDIRILDI */
 .arkalogo-img {
     position: absolute;
     top: -27px;
-    left: 120px; 
+    /* Buradaki değeri artırarak (150, 180, 200...) istediğin kadar sağa itebilirsin */
+    left: 150px; 
     height: 78px;
     width: auto;
     z-index: 999; 
@@ -59,26 +62,11 @@ body {
 
 .logo3-img { display: none; }
 
-/* SAĞ TARAF VE YENİ İKONLAR */
 .header-right {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding-right: 185px; /* logo2.png'nin üzerine binmemesi için */
-}
-
-/* edevlet ve uyegirisi için özel stil */
-.header-icons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    z-index: 2000; /* En üst katman */
-}
-
-.header-icons img {
-    height: 35px; /* İkon yüksekliği */
-    width: auto;
-    cursor: pointer;
+    gap: 20px;
+    padding-right: 180px; 
 }
 
 .logo2-img {
@@ -90,19 +78,7 @@ body {
     z-index: 1001;       
 }
 
-/* BUTONLAR */
-.ed-btn {
-    background: #e74c3c;
-    border: none;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    white-space: nowrap;
-}
-
-/* MOBİL MENÜ */
+/* MOBİL MENÜ BUTONU */
 .mobile-menu-btn {
     display: none;
     flex-direction: column;
@@ -123,6 +99,16 @@ body {
     height: 3px;
     background-color: rgba(255, 255, 255, 0.5); 
     border-radius: 2px;
+}
+
+.ed-btn {
+    background: #e74c3c;
+    border: none;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
 }
 
 /* ANA YAPI */
@@ -150,6 +136,7 @@ body {
 .page-title {
     font-family: 'Inter', sans-serif;
     font-size: 18px; 
+    font-weight: 350; 
     color: #6c757d; 
     text-transform: uppercase;
 }
@@ -193,12 +180,13 @@ body {
 
 /* --- MEDYA SORGULARI --- */
 @media (max-width: 1000px) {
-    .logo-img, .arkalogo-img, .logo2-img, .header-right, .header-icons {
+    .logo-img, .arkalogo-img, .logo2-img, .header-right .ed-btn, .header-right span {
         display: none !important;
     }
     .logo3-img { display: block !important; }
     .sidebar { width: 100%; max-height: 0; box-shadow: none; }
     .sidebar.open { max-height: 500px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .header-right { padding-right: 0; }
     .mobile-menu-btn { display: flex !important; }
     .main { padding: 10px; flex-direction: column; }
     .card { width: 100%; }
@@ -218,13 +206,7 @@ body {
 
     <div class="header-right">
         <button class="ed-btn">e-Devlet ile Giriş Yap</button>
-        <span style="font-size:13px; cursor:pointer; font-weight:600; white-space: nowrap;">➔ ÜYE GİRİŞİ</span>
-        
-        <div class="header-icons">
-            <img src="edevlet.png" alt="e-Devlet">
-            <img src="uyegirisi.png" alt="Üye Girişi">
-        </div>
-
+        <span style="font-size:13px; cursor:pointer; font-weight:600;">➔ ÜYE GİRİŞİ</span>
         <img src="logo2.png" alt="Logo 2" class="logo2-img">
     </div>
 
