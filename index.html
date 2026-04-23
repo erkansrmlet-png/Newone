@@ -10,7 +10,7 @@
 body {
     margin: 0;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f2f5; /* Sayfa arka planı hafif gri */
+    background: #f0f2f5; 
     color: #444;
 }
     
@@ -21,7 +21,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 0 0 20px; /* SAĞ PADDING SIFIRLANDI */
+    padding: 0 0 0 20px; 
     color: #fff;
     position: relative;
     z-index: 100;
@@ -36,7 +36,6 @@ body {
     font-weight: 500;
 }
 
-/* LOGO KONUMU - DOKUNULMADI */
 .logo-img {
     position: absolute;
     top: -27px;
@@ -47,16 +46,19 @@ body {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 15px;
-    height: 100%; /* Dikeyde tam kaplaması için */
+    gap: 20px;
+    padding-right: 180px; /* Logo2 için burada yer açtık (Genişliğine göre ayarla) */
 }
 
-/* LOGO 2 - SAĞA YAPIŞIK AYAR */
+/* LOGO 2 - KESİN ÇÖZÜM AYARI */
 .logo2-img {
-    height: 70px; /* Header ile aynı yükseklik */
+    position: absolute; /* Header içinde serbest bırakır */
+    right: 0;           /* En sağa yapıştırır */
+    top: 0;             /* En üste yapıştırır */
+    height: 70px;       /* Header boyu kadar */
     width: auto;
     display: block;
-    margin-left: 5px; /* Üye girişi ile arasında çok az boşluk */
+    z-index: 101;       /* En üstte görünmesini sağlar */
 }
 
 .ed-btn {
@@ -77,7 +79,6 @@ body {
     align-items: flex-start; 
 }
 
-/* SOL MENÜ ÇERÇEVESİ (AYRI KART GÖRÜNÜMÜ) */
 .sidebar {
     width: 236px; 
     background: #fff;
@@ -85,7 +86,6 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
     border: 1px solid #e0e4e8;
     overflow: hidden;
-    
     margin-top: 3px;   
     margin-left: -2px; 
 }
@@ -98,7 +98,6 @@ body {
     left: 0px; 
 }
 
-/* İÇERİK ALANI */
 .content {
     flex: 1;
 }
@@ -126,7 +125,6 @@ body {
     width: 97%;          
 }
 
-/* PNG BUTON YENİ AYARLARI */
 .y-buton-img {
     cursor: pointer;
     display: block;
@@ -138,7 +136,6 @@ body {
     margin-bottom: 5px; 
 }
 
-/* AYIRICI BAR */
 .separator-bar {
     height: 1px;
     background-color: #e9ecef; 
@@ -148,7 +145,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* PDF ÖNİZLEME ALANI */
 .pdf-container {
     width: 100%;
     height: 650px;
@@ -157,7 +153,6 @@ body {
     overflow: hidden;
 }
 
-/* FOOTER */
 .footer {
     position: fixed;
     bottom: 5px;
@@ -173,7 +168,7 @@ body {
 <div class="header">
     <div class="logo-area">
         <img src="logo.png" class="logo-img">
-        SAMANDAĞ BELEDİYESİ <span style="margin-left:10px; font-weight:300; opacity:0.9;"></span>
+        SAMANDAĞ BELEDİYESİ
     </div>
 
     <div class="header-right">
