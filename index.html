@@ -38,7 +38,6 @@ body {
     flex-grow: 1;
 }
 
-/* LOGOLAR */
 .logo-img, .logo3-img {
     position: absolute;
     top: -30px;
@@ -52,9 +51,7 @@ body {
     top: -30px;
     left: 1250px; 
     height: 88px;
-    width: auto;
     z-index: 999; 
-    display: block !important;
 }
 
 .logo3-img { display: none; }
@@ -63,10 +60,8 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
-    padding-right: 10px; 
 }
 
-/* SAĞ ÜST İKONLAR */
 .header-icons {
     display: flex;
     align-items: center;
@@ -76,66 +71,16 @@ body {
 
 .header-icons img {
     height: 25px; 
-    width: auto;
     cursor: pointer;
 }
 
-/* MOBİL MENÜ BUTONU */
-.mobile-menu-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    position: absolute; 
-    right: 15px;
-    top: 22px;          
-    z-index: 9999;      
-}
-
-.mobile-menu-btn span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: rgba(255, 255, 255, 0.5); 
-    border-radius: 2px;
-}
-
-/* MOBİL PDF UYARI METNİ */
-.mobile-pdf-warning {
-    display: none;
-    font-family: "Segoe UI", Tahoma, sans-serif;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #333;
-    padding: 20px 0;
-}
-
-.mobile-pdf-warning a {
-    color: #337ab7;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.ed-btn {
-    background: #e74c3c;
-    border: none;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-/* ANA YAPI */
+/* ANA YAPI - DÜZELTİLDİ */
 .main {
     display: flex;
     padding: 20px; 
     gap: 25px;      
-    align-items: flex-start;
-    max-width: 100%;
+    max-width: 1300px; /* Sayfanın çok yayılmasını önler */
+    margin: 0 auto;    /* Ortalar */
     box-sizing: border-box;
 }
 
@@ -147,50 +92,32 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
     border: 1px solid #e0e4e8;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
 }
 
 .sidebar-img { width: 100%; display: block; }
 
-.content { flex: 1; min-width: 0; }
-
-.page-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px; 
-    font-weight: 350; 
-    color: #6c757d; 
-    text-transform: uppercase;
-    margin-bottom: 10px;
+.content { 
+    flex: 1; 
+    min-width: 0; /* Taşıyıcıyı içeriğe göre daraltır */
 }
 
+/* ÇERÇEVE VE EVRAK ALANI - TAM ORANTILI */
 .card {
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     padding: 20px;
-    min-height: 700px;
     border: 1px solid #eee;
-    width: 100%; 
+    width: 100%;       /* Sabit yüzde yerine tam uyum */
     box-sizing: border-box; 
-}
-
-.y-buton-img {
-    cursor: pointer;
-    display: block;
-    max-width: 111.5px; 
-    width: 100%;
-    position: relative;
-    top: -7.8px; 
-    margin-bottom: 5px; 
+    margin-top: 10px;
 }
 
 .separator-bar {
     height: 1px;
     background-color: #e9ecef; 
-    width: calc(100% + 40px); 
-    margin-left: -20px; 
-    margin-top: 5px;
-    margin-bottom: 20px;
+    width: 100%;       /* Dışarı taşmaması için 100% yaptık */
+    margin: 15px 0;
 }
 
 .pdf-container {
@@ -201,46 +128,49 @@ body {
     overflow: hidden;
 }
 
-/* --- MEDYA SORGULARI --- */
-
-/* 1000PX - TABLET/MOBİL GEÇİŞ */
-@media (max-width: 1000px) {
-    .logo-img, .arkalogo-img, .header-right .ed-btn, .header-right span {
-        display: none !important;
-    }
-    .logo3-img { display: block !important; }
-    
-    .header-icons {
-        display: flex !important;
-        position: absolute;
-        right: 60px;
-        top: 22px;
-    }
-
-    .sidebar { width: 100%; max-height: 0; box-shadow: none; }
-    .sidebar.open { max-height: 1000px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-    .header-right { padding-right: 0; }
-    .mobile-menu-btn { display: flex !important; }
-    .main { padding: 10px; flex-direction: column; }
-    .card { width: 100%; }
+/* MOBİL PDF UYARISI */
+.mobile-pdf-warning {
+    display: none;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    text-align: center;
 }
 
-/* 600PX - TELEFON EKLEMELERİ */
+/* MOBİL MENÜ BUTONU */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    z-index: 9999;
+}
+.mobile-menu-btn span { width: 25px; height: 3px; background: #fff; border-radius: 2px; }
+
+/* MEDYA SORGULARI */
+@media (max-width: 1000px) {
+    .logo-img, .arkalogo-img, .header-right button, .header-right span { display: none !important; }
+    .logo3-img { display: block !important; }
+    .logo-area { padding-left: 80px; }
+    
+    .header-icons {
+        position: absolute;
+        right: 60px;
+    }
+    .mobile-menu-btn { display: flex !important; position: absolute; right: 20px; }
+    
+    .main { flex-direction: column; padding: 15px; }
+    .sidebar { width: 100%; display: none; } /* Mobilde sidebar gizli, menü açınca gelmeli */
+    .sidebar.open { display: block; }
+}
+
 @media (max-width: 600px) {
-    .pdf-container {
-        display: none !important; /* PDF alanını gizle */
-    }
-    .mobile-pdf-warning {
-        display: block !important; /* İndirme uyarısını göster */
-    }
-    .card {
-        min-height: auto;
-        padding-bottom: 30px;
-    }
+    .pdf-container { display: none !important; }
+    .mobile-pdf-warning { display: block !important; }
+    .card { padding: 15px; }
 }
 </style>
 </head>
-
 <body>
 
 <div class="header">
@@ -252,19 +182,17 @@ body {
     </div>
 
     <div class="header-right">
-        <button class="ed-btn">e-Devlet ile Giriş Yap</button>
-        <span style="font-size:13px; cursor:pointer; font-weight:600; white-space: nowrap;">➔ ÜYE GİRİŞİ</span>
+        <button class="ed-btn" style="background: #e74c3c; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">e-Devlet ile Giriş Yap</button>
+        <span style="font-size:13px; font-weight:600; color:#fff; cursor:pointer; margin-left: 10px;">➔ ÜYE GİRİŞİ</span>
         
-        <div class="header-icons">
-            <img src="edevlet.png" alt="e-Devlet">
-            <img src="uyegirisi.png" alt="Üye Girişi">
+        <div class="header-icons" style="margin-left: 20px;">
+            <img src="edevlet.png" alt="e-Devlet" style="height:25px;">
+            <img src="uyegirisi.png" alt="Üye Girişi" style="height:25px; margin-left:10px;">
         </div>
     </div>
 
     <div class="mobile-menu-btn" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </div>
 </div>
 
@@ -274,9 +202,9 @@ body {
     </div>
 
     <div class="content">
-        <div class="page-title">BELGE DOĞRULAMA</div>
+        <div class="page-title" style="color: #6c757d; font-weight: 350; text-transform: uppercase;">BELGE DOĞRULAMA</div>
         <div class="card">
-            <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img">
+            <img src="ybuton.png" alt="Yeni Sorgu" style="width: 111.5px; cursor: pointer; display: block;">
             <div class="separator-bar"></div>
             
             <div class="pdf-container">
@@ -284,7 +212,10 @@ body {
             </div>
 
             <div class="mobile-pdf-warning">
-                This browser does not support inline PDFs. Please download the PDF to view it: <a href="Evrak.pdf" target="_blank">Download PDF</a>
+                Bu tarayıcı PDF görüntülemeyi desteklemiyor. <br><br>
+                <a href="Evrak.pdf" target="_blank" style="color: #337ab7; font-weight: bold; text-decoration: none;">
+                    Evrağı İndirmek İçin Tıklayın
+                </a>
             </div>
         </div>
     </div>
@@ -295,7 +226,7 @@ body {
 <script>
 function toggleMenu() {
     const sidebar = document.getElementById('mobileSidebar');
-    sidebar.classList.toggle('open');
+    sidebar.style.display = (sidebar.style.display === 'block') ? 'none' : 'block';
 }
 </script>
 
