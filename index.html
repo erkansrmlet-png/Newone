@@ -107,10 +107,10 @@ body {
     color: #6c757d; 
     text-transform: uppercase;
     margin-top: 8.5px; 
-    margin-left: -6px; /* Eski yerine alındı */
+    margin-left: -6px; 
 }
 
-/* KART - ESKİ YERİNE ALINDI */
+/* KART - DÜZELTİLDİ */
 .card {
     background: #fff;
     border-radius: 4px;
@@ -119,8 +119,9 @@ body {
     min-height: 700px;
     border: 1px solid #eee;
     margin-top: 8px; 
-    margin-left: -7px; /* Kart eski yerine (biraz sola) çekildi */
-    width: 97%;       /* Orijinal genişliğine döndü */
+    margin-left: -7px; 
+    width: 97%;       
+    max-width: calc(100% + 7px); /* Taşmayı önlemek için eklendi */
     box-sizing: border-box; 
 }
 
@@ -140,6 +141,7 @@ body {
     margin-left: -20px; 
     margin-top: 5px;
     margin-bottom: 20px;
+    max-width: none; /* Çizginin kart içinde kalması için mobilde sıfırlanacak */
 }
 
 .pdf-container {
@@ -183,7 +185,7 @@ body {
 
 /* --- MEDYA SORGULARI --- */
 @media (max-width: 1000px) {
-    .logo-img, .arkalogo-img, .header-right .ed-btn, .header-right span {
+    .logo-img, .arkalogo-img, .header-right button, .header-right span {
         display: none !important;
     }
     .logo3-img { display: block !important; }
@@ -200,16 +202,26 @@ body {
     .mobile-menu-btn { display: flex !important; }
     .main { padding: 10px; flex-direction: column; }
     
+    /* Kart ve İçerik Mobilde Tam Sığsın */
     .card { 
         width: 100%; 
-        margin-left: 0; /* Mobilde taşmaması için sıfırlandı */
+        margin-left: 0; 
+        max-width: 100%;
         padding: 15px; 
+    }
+    .separator-bar {
+        width: calc(100% + 30px);
+        margin-left: -15px;
+    }
+    .page-title {
+        margin-left: 0;
     }
 }
 
 @media (max-width: 600px) {
     .pdf-container { display: none !important; }
     .mobile-pdf-warning { display: block !important; }
+    .card { min-height: auto; }
 }
 </style>
 </head>
