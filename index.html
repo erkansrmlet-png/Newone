@@ -254,10 +254,15 @@ body {
         left: -35px;
         height: 77px;
         width: auto;
+        /* Ekrandan taşan kısımları kesmek için eklenenler */
+        max-width: calc(100vw + 35px); 
+        object-fit: cover;
+        object-position: left center;
+        overflow: hidden;
         z-index: 1001;
     }
 
-    /* 600px altında yukarıdaki genel ikonları gizle, senin özel konumlandırdıklarını göster */
+    /* 600px altında yukarıdaki genel ikonları gizle */
     .header-right { display: none !important; }
 
     .uye600-img {
@@ -282,6 +287,7 @@ body {
 
     .logo-area {
         padding-left: 70px;
+        overflow: hidden; /* Area dışına taşmayı engeller */
     }
 
     .pdf-container { display: none !important; }
