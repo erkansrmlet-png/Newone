@@ -12,7 +12,7 @@ body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background: #f0f2f5; 
     color: #444;
-    overflow-x: hidden; /* Ekranın sağa kaymasını tamamen engeller */
+    overflow-x: hidden;
 }
     
 /* HEADER */
@@ -26,7 +26,6 @@ body {
     color: #fff;
     position: relative;
     z-index: 1000;
-    overflow: hidden; /* LOGONUN SAĞDAN TAŞAN KISMINI KESER */
 }
 
 .logo-area {
@@ -208,6 +207,7 @@ body {
     .logo3-img { display: block !important; }
     .sidebar { display: none !important; }
     
+    /* İkonların görünmesi için z-index ve sağa yaslama ayarı */
     .header-right { 
         display: flex !important; 
         position: absolute !important;
@@ -228,7 +228,7 @@ body {
 
     .header-icons img {
         display: block !important;
-        height: 25px !important; 
+        height: 25px !important; /* Görünmesi için boyutu netleştirdik */
         width: auto !important;
     }
 
@@ -257,6 +257,7 @@ body {
         z-index: 1001;
     }
 
+    /* 600px altında yukarıdaki genel ikonları gizle, senin özel konumlandırdıklarını göster */
     .header-right { display: none !important; }
 
     .uye600-img {
