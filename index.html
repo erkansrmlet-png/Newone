@@ -207,7 +207,32 @@ body {
     .logo-img, .arkalogo-img { display: none !important; }
     .logo3-img { display: block !important; }
     .sidebar { display: none !important; }
-    .header-right { display: none; }
+    
+    /* İkonların kaybolmasını engelle ve hizala */
+    .header-right { 
+        display: flex !important; 
+        position: absolute;
+        right: 55px; /* Hamburger menünün soluna çektik */
+        top: 50%;
+        transform: translateY(-50%);
+        gap: 10px;
+    }
+    
+    /* Sadece yazı ve butonları gizle, ikonlar kalsın */
+    .header-right button, .header-right > span { 
+        display: none !important; 
+    }
+
+    .header-icons {
+        display: flex !important;
+        gap: 12px;
+    }
+
+    .header-icons img {
+        height: 22px;
+        width: auto;
+    }
+
     .mobile-menu-btn { display: flex; }
     .mobile-slide-container { display: block; }
     
@@ -219,7 +244,6 @@ body {
 
 /* 600PX ALTI */
 @media (max-width: 600px) {
-    /* Mevcut logoları gizle */
     .arkalogo-img, .logo-img {
         display: none !important;
     }
@@ -234,12 +258,15 @@ body {
         z-index: 1001;
     }
 
-    /* Yeni İkonlar: En sağ üst ve yan yana */
+    /* 600px altında header-right içindeki ana ikonları gizleyip 
+       senin özel eklediğin pozisyonlu ikonları gösteriyoruz */
+    .header-right { display: none !important; }
+
     .uye600-img {
         display: block !important;
         position: absolute;
         top: 50px;
-        right: 60px; /* Menü butonunun solunda */
+        right: 60px;
         height: 15px;
         width: auto;
         z-index: 1002;
@@ -249,7 +276,7 @@ body {
         display: block !important;
         position: absolute;
         top: 50px;
-        right: 125px; /* Üye ikonunun solunda */
+        right: 125px;
         height: 25px;
         width: auto;
         z-index: 1002;
