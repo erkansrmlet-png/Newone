@@ -222,10 +222,20 @@ body {
 */
 @media (max-width: 600px) {
     /* Diğer logoları gizle */
-    .logo3-img, .arkalogo-img {
+    .arkalogo-img {
         display: none !important;
     }
-
+    
+    .logo3-img {
+        display: block !important;
+        position: absolute;
+        top: 10px;      /* Yukarıdan mesafe (istediğin gibi değiştir) */
+        left: 10px;     /* Soldan mesafe (istediğin gibi değiştir) */
+        height: 50px;   /* Mobildeki yüksekliği */
+        width: auto;
+        z-index: 1001;  /* En üstte kalması için */
+    }
+    
     /* logo.png'yi geri getir ve konumlandır */
     .logo-img {
         display: block !important;
@@ -258,7 +268,6 @@ body {
         <img src="logo.png" class="logo-img">
         <img src="arkalogo.png" class="arkalogo-img">
         <img src="logo3.png" class="logo3-img">
-        SAMAaaaaNDAĞ BELEDİYESİ
     </div>
 
     <div class="header-right">
