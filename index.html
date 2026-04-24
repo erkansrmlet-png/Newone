@@ -12,7 +12,7 @@ body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background: #f0f2f5; 
     color: #444;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Ekranın sağa kaymasını tamamen engeller */
 }
     
 /* HEADER */
@@ -26,6 +26,7 @@ body {
     color: #fff;
     position: relative;
     z-index: 1000;
+    overflow: hidden; /* LOGONUN SAĞDAN TAŞAN KISMINI KESER */
 }
 
 .logo-area {
@@ -253,9 +254,6 @@ body {
         left: -35px;
         height: 77px;
         width: auto;
-        /* YENİ: Logonun sağa doğru uzamasını ama ekranı taşmamasını sağlar */
-        max-width: calc(100vw + 35px); /* Ekran genişliği + sol boşluk */
-        object-fit: contain; /* Görseli orantılı tutar */
         z-index: 1001;
     }
 
