@@ -188,34 +188,50 @@ body {
 
 /* --- MEDYA SORGULARI --- */
 
-/* 1000PX VE ALTI: TAM SIĞDIRMA */
+/* --- 1000PX VE ALTI İÇİN MEDYA SORGUSU --- */
 @media (max-width: 1000px) {
-    .logo-img, .arkalogo-img, .header-right button, .header-right span {
+    .logo-img, .logo2-img {
         display: none !important;
     }
-    .logo3-img { display: block !important; }
+    .logo3-img {
+        display: block !important;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+
+    .header-right .ed-btn, 
+    .header-right span {
+        display: none;
+    }
     
-    .header-icons {
-        display: flex !important;
-        position: absolute;
-        right: 60px;
-        top: 22px;
+    .header-right {
+        padding-right: 0;
     }
 
-    .main { padding: 10px; flex-direction: column; }
-    .sidebar { width: 100%; margin-bottom: 15px; display: none; }
-    .sidebar.open { display: block; }
-    .mobile-menu-btn { display: flex !important; }
-
-    /* Kartın ekrana tam orantılı sığması için margin sıfırlandı */
-    .card { 
-        width: 100% !important; 
-        margin-left: 0 !important; 
-        padding: 15px; 
-        min-height: auto;
+    .mobile-menu-btn {
+        display: flex; /* Artık çizgiler görünecek */
     }
-    .separator-bar { width: calc(100% + 30px); margin-left: -15px; }
-    .page-title { margin-left: 0; }
+    
+    .main {
+        padding: 10px;
+    }
+    
+    .card {
+        width: 100%;
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .pdf-container {
+        height: 80vh; /* Mobilde yüksekliği ekran boyuna göre ayarlar */
+    }
+
+    .page-title {
+        margin-left: 5px;
+        font-size: 16px;
+    }
 }
 
 /* 600PX VE ALTI: YAZI DÜZELTMESİ */
