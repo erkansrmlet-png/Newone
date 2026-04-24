@@ -207,7 +207,6 @@ body {
     .logo3-img { display: block !important; }
     .sidebar { display: none !important; }
     
-    /* İkonların görünmesi için z-index ve sağa yaslama ayarı */
     .header-right { 
         display: flex !important; 
         position: absolute !important;
@@ -228,7 +227,7 @@ body {
 
     .header-icons img {
         display: block !important;
-        height: 25px !important; /* Görünmesi için boyutu netleştirdik */
+        height: 25px !important; 
         width: auto !important;
     }
 
@@ -254,10 +253,12 @@ body {
         left: -35px;
         height: 77px;
         width: auto;
+        /* YENİ: Logonun sağa doğru uzamasını ama ekranı taşmamasını sağlar */
+        max-width: calc(100vw + 35px); /* Ekran genişliği + sol boşluk */
+        object-fit: contain; /* Görseli orantılı tutar */
         z-index: 1001;
     }
 
-    /* 600px altında yukarıdaki genel ikonları gizle, senin özel konumlandırdıklarını göster */
     .header-right { display: none !important; }
 
     .uye600-img {
