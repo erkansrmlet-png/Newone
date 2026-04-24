@@ -214,16 +214,24 @@ body {
     
 /* --- 600PX MEDYA SORGUSU --- */
 @media (max-width: 600px) {
+    /* 1. Diğer logoyu (logo3) burada gizle ki çakışmasınlar */
+    .logo3-img {
+        display: none !important;
+    }
+
+    /* 2. Orijinal logoyu aşağı sola yerleştir ve boyutlandır */
     .logo-img {
         display: block !important; 
-        position: fixed; /* Ekranın belli bir yerinde sabit kalması için */
-        bottom: 20px;    /* Aşağıdan mesafe (Ayarlanabilir) */
-        left: 20px;      /* Soldan mesafe (Ayarlanabilir) */
-        top: auto;       /* Üstteki eski konumunu iptal eder */
-        height: 60px;    /* Boyut ayarı */
+        position: fixed;   /* Ekranın sol alt köşesine sabitler */
+        bottom: 15px;      /* Aşağıdan 15px yukarıda */
+        left: 15px;        /* Soldan 15px içeride */
+        top: auto;         /* Header'daki 'top' değerini sıfırlar */
+        height: 55px;      /* İstediğin boyuta göre buradan ayarla */
         width: auto;
-        z-index: 10001;  /* En üstte görünmesi için */
+        z-index: 10001;    /* Diğer her şeyin üstünde görünmesi için */
     }
+
+    /* Mevcut diğer 600px ayarların (bozma) */
     .pdf-container {
         display: none !important;
     }
