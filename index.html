@@ -58,7 +58,6 @@ body {
 
 .logo3-img { display: none; }
 
-/* Yeni Eklenen Görsellerin Masaüstünde Gizlenmesi */
 .uye600-img, .edevlet600-img {
     display: none;
 }
@@ -208,29 +207,29 @@ body {
     .logo3-img { display: block !important; }
     .sidebar { display: none !important; }
     
-    /* İkonların kaybolmasını engelle ve hizala */
+    /* İkonların görünmesi için z-index ve sağa yaslama ayarı */
     .header-right { 
         display: flex !important; 
-        position: absolute;
-        right: 55px; /* Hamburger menünün soluna çektik */
-        top: 50%;
-        transform: translateY(-50%);
-        gap: 10px;
+        position: absolute !important;
+        right: 55px !important; 
+        top: 22px !important;
+        z-index: 10005 !important; 
+        background: transparent !important;
     }
     
-    /* Sadece yazı ve butonları gizle, ikonlar kalsın */
     .header-right button, .header-right > span { 
         display: none !important; 
     }
 
     .header-icons {
         display: flex !important;
-        gap: 12px;
+        gap: 12px !important;
     }
 
     .header-icons img {
-        height: 22px;
-        width: auto;
+        display: block !important;
+        height: 25px !important; /* Görünmesi için boyutu netleştirdik */
+        width: auto !important;
     }
 
     .mobile-menu-btn { display: flex; }
@@ -258,8 +257,7 @@ body {
         z-index: 1001;
     }
 
-    /* 600px altında header-right içindeki ana ikonları gizleyip 
-       senin özel eklediğin pozisyonlu ikonları gösteriyoruz */
+    /* 600px altında yukarıdaki genel ikonları gizle, senin özel konumlandırdıklarını göster */
     .header-right { display: none !important; }
 
     .uye600-img {
