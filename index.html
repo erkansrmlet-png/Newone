@@ -212,12 +212,42 @@ body {
     .page-title { margin-left: 5px; font-size: 16px; }
 }
     
+/*
 @media (max-width: 600px) {
     .pdf-container { display: none !important; }
     .mobile-pdf-warning { display: block !important; }
     .card { min-height: auto; }
 }
+    
+*/
+@media (max-width: 600px) {
+    /* Diğer logoları gizle */
+    .logo3-img, .arkalogo-img {
+        display: none !important;
+    }
 
+    /* logo.png'yi geri getir ve konumlandır */
+    .logo-img {
+        display: block !important;
+        position: absolute;
+        top: 10px;      /* Yukarıdan mesafe (istediğin gibi değiştir) */
+        left: 10px;     /* Soldan mesafe (istediğin gibi değiştir) */
+        height: 50px;   /* Mobildeki yüksekliği */
+        width: auto;
+        z-index: 1001;  /* En üstte kalması için */
+    }
+
+    /* Yazının logoyla çakışmaması için gerekirse alanı kaydır */
+    .logo-area {
+        padding-left: 70px; /* Logonun genişliğine göre burayı artır/azalt */
+    }
+
+    /* PDF uyarısı ve diğer mevcut 600px kodların burada kalmaya devam etsin */
+    .pdf-container { display: none !important; }
+    .mobile-pdf-warning { display: block !important; }
+    .card { min-height: auto; }
+}
+    
 </style>
 </head>
 
