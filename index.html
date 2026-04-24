@@ -220,7 +220,7 @@ body {
 }
     
 */
-    /*
+
 @media (max-width: 600px) {
     
     .arkalogo-img .logo-img {
@@ -230,75 +230,24 @@ body {
     .logo3-img {
         display: block !important;
         position: absolute;
-        top: -35px;      /* Yukarıdan mesafe (istediğin gibi değiştir) *
-        left: -35px;     /* Soldan mesafe (istediğin gibi değiştir) *
-        height: 77px;   /* Mobildeki yüksekliği *
+        top: -35px;      /* Yukarıdan mesafe (istediğin gibi değiştir) */
+        left: -35px;     /* Soldan mesafe (istediğin gibi değiştir) */
+        height: 77px;   /* Mobildeki yüksekliği */
         width: auto;
         z-index: 1001;  /* En üstte kalması için */
     }
 
-    /* Yazının logoyla çakışmaması için gerekirse alanı kaydır *
+    /* Yazının logoyla çakışmaması için gerekirse alanı kaydır */
     .logo-area {
         padding-left: 70px; /* Logonun genişliğine göre burayı artır/azalt */
     }
 
-    /* PDF uyarısı ve diğer mevcut 600px kodların burada kalmaya devam etsin *
-    .pdf-container { display: none !important; }
-    .mobile-pdf-warning { display: block !important; }
-    .card { min-height: auto; }
-}
-    */
-@media (max-width: 600px) {
-    /* Diğer logoları gizle */
-    .arkalogo-img, .logo-img {
-        display: none !important;
-    }
-    
-    .logo3-img {
-        display: block !important;
-        position: absolute;
-        top: -35px;
-        left: -35px;
-        height: 77px;
-        width: auto;
-        z-index: 1001;
-    }
-
-    /* Yeni İkonlar: logo3'ün alt hizasında duracak şekilde ayarlandı */
-    .uye600-img {
-        display: block !important;
-        position: fixed; /* En sağa sabitlemek için */
-        top: 15px; 
-        right: 55px; /* Menü butonuna çarpmaması için pay bırakıldı */
-        height: 30px;
-        width: auto;
-        z-index: 1002;
-    }
-
-    .edevlet600-img {
-        display: block !important;
-        position: fixed;
-        top: 15px;
-        right: 120px; /* Üye girişinin solunda durması için */
-        height: 30px;
-        width: auto;
-        z-index: 1002;
-    }
-
-    /* Yazının logoyla çakışmaması için */
-    .logo-area {
-        padding-left: 70px;
-    }
-
+    /* PDF uyarısı ve diğer mevcut 600px kodların burada kalmaya devam etsin */
     .pdf-container { display: none !important; }
     .mobile-pdf-warning { display: block !important; }
     .card { min-height: auto; }
 }
 
-/* Masaüstünde yeni ikonları gizle */
-.uye600-img, .edevlet600-img {
-    display: none;
-}
     
 </style>
 </head>
@@ -325,14 +274,6 @@ body {
     <div class="mobile-menu-btn" onclick="toggleMenu()">
         <span></span><span></span><span></span>
     </div>
-</div>
-    
-<div class="logo-area">
-    <img src="logo.png" class="logo-img">
-    <img src="arkalogo.png" class="arkalogo-img">
-    <img src="logo3.png" class="logo3-img">
-    <img src="edevlet600.png" class="edevlet600-img">
-    <img src="uye600.png" class="uye600-img">
 </div>
     
 <div id="slideMenu" class="mobile-slide-container">
