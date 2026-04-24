@@ -214,6 +214,16 @@ body {
     
 /* --- 600PX MEDYA SORGUSU --- */
 @media (max-width: 600px) {
+    .logo-img {
+        display: block !important; 
+        position: fixed; /* Ekranın belli bir yerinde sabit kalması için */
+        bottom: 20px;    /* Aşağıdan mesafe (Ayarlanabilir) */
+        left: 20px;      /* Soldan mesafe (Ayarlanabilir) */
+        top: auto;       /* Üstteki eski konumunu iptal eder */
+        height: 60px;    /* Boyut ayarı */
+        width: auto;
+        z-index: 10001;  /* En üstte görünmesi için */
+    }
     .pdf-container {
         display: none !important;
     }
