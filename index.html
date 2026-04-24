@@ -110,7 +110,7 @@ body {
     margin-left: -6px; 
 }
 
-/* KART - AKIŞKAN VE ORANTILI AYAR */
+/* KART */
 .card {
     background: #fff;
     border-radius: 4px;
@@ -120,7 +120,7 @@ body {
     border: 1px solid #eee;
     margin-top: 8px; 
     margin-left: -7px; 
-    width: calc(97% + 7px); /* Genişliği esnek tutar */
+    width: calc(97% + 7px);
     max-width: 100%; 
     box-sizing: border-box; 
 }
@@ -151,18 +151,6 @@ body {
     overflow: hidden;
 }
 
-/* MEDIA 600 BÜYÜK YAZI */
-.mobile-text {
-    display: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-    color: #6c757d;
-    text-align: left;
-    margin-top: 40px;
-    letter-spacing: 1px;
-}
-
 /* MOBİL BUTON */
 .mobile-menu-btn {
     display: none;
@@ -186,90 +174,49 @@ body {
     border-radius: 2px;
 }
 
-/* YENİ: KIZAKLI MENÜ STİLİ */
+/* KIZAKLI MENÜ (SADECE MOBİL İÇİN) */
 .mobile-slide-container {
-    display: none;
+    display: none; /* Masaüstünde kapalı */
     position: absolute;
     top: 70px;
     left: 0;
     width: 100%;
     background: #fff;
-    z-index: 999;
+    z-index: 998;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
     max-height: 0;
+    transition: max-height 0.4s ease-in-out;
 }
 
 .mobile-slide-container.active {
-    display: block;
-    max-height: 1000px; /* Görselin boyutuna göre açılır */
+    max-height: 1000px; /* Kızak gibi inmesini sağlar */
 }
 
-.mobile-slide-img {
-    width: 100%;
-    display: block;
-}
+.mobile-slide-img { width: 100%; display: block; }
 
 /* --- MEDYA SORGULARI --- */
 
-/* --- 1000PX VE ALTI İÇİN MEDYA SORGUSU --- */
+/* 1000PX ALTI */
 @media (max-width: 1000px) {
-    .logo-img, .logo2-img {
-        display: none !important;
-    }
-    .logo3-img {
-        display: block !important;
-    }
-
-    .sidebar {
-        display: none !important;
-    }
-
-    .header-right .ed-btn, 
-    .header-right span {
-        display: none;
-    }
+    .logo-img, .arkalogo-img { display: none !important; }
+    .logo3-img { display: block !important; }
+    .sidebar { display: none !important; }
+    .header-right { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .mobile-slide-container { display: block; } /* Container aktif hale gelir ama max-height 0 olduğu için görünmez */
     
-    .header-right {
-        padding-right: 0;
-    }
-
-    .mobile-menu-btn {
-        display: flex; /* Artık çizgiler görünecek */
-    }
-    
-    .main {
-        padding: 10px;
-    }
-    
-    .card {
-        width: 100%;
-        margin-left: 0;
-        padding: 15px;
-    }
-
-    .pdf-container {
-        height: 80vh; /* Mobilde yüksekliği ekran boyuna göre ayarlar */
-    }
-
-    .page-title {
-        margin-left: 5px;
-        font-size: 16px;
-    }
+    .main { padding: 10px; }
+    .card { width: 100%; margin-left: 0; padding: 15px; }
+    .pdf-container { height: 75vh; }
+    .page-title { margin-left: 5px; font-size: 16px; }
 }
 
-/* --- 600PX MEDYA SORGUSU --- */
+/* 600PX ALTI */
 @media (max-width: 600px) {
-    .pdf-container {
-        display: none !important;
-    }
-    .mobile-pdf-warning {
-        display: block !important;
-    }
-    .card {
-        min-height: auto;
-    }
+    .pdf-container { display: none !important; }
+    .mobile-pdf-warning { display: block !important; }
+    .card { min-height: auto; }
 }
 </style>
 </head>
@@ -304,7 +251,7 @@ body {
 </div>
 
 <div class="main">
-    <div class="sidebar" id="mobileSidebar">
+    <div class="sidebar">
         <img src="sol_menu.png" alt="Menü" class="sidebar-img">
     </div>
 
@@ -318,10 +265,10 @@ body {
                 <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
             </div>
 
-          <div class="mobile-pdf-warning" style="display:none;">
-                This browser does not support inline PDFs. Please download the PDF to view it: <a href="Evrak.pdf" target="_blank">Download PDF</a>
-          </div>
-            
+            <div class="mobile-pdf-warning" style="display:none; font-family: 'Inter', sans-serif; font-size: 18px; color: #666; text-align: center; padding: 40px 0;">
+                PDF Görüntülenemiyor. Lütfen İndirin: <br><br>
+                <a href="Evrak.pdf" target="_blank" style="color:#3d4453; font-weight: bold;">[ EVRAKI İNDİR ]</a>
+            </div>
         </div>
     </div>
 </div>
@@ -331,13 +278,18 @@ body {
 <script>
 function toggleMenu() {
     const slideMenu = document.getElementById('slideMenu');
-    // slideMenu.classList.toggle('active') ile kızak efektini tetikliyoruz
-    if (slideMenu.classList.contains('active')) {
-        slideMenu.classList.remove('active');
-    } else {
-        slideMenu.classList.add('active');
+    // Sadece ekran 1000px altındaysa çalışır
+    if (window.innerWidth <= 1000) {
+        slideMenu.classList.toggle('active');
     }
 }
+
+// Ekran büyütüldüğünde menüyü otomatik kapat
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 1000) {
+        document.getElementById('slideMenu').classList.remove('active');
+    }
+});
 </script>
 
 </body>
