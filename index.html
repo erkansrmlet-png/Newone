@@ -240,6 +240,8 @@ body {
     .pdf-container { height: 75vh; }
     .page-title { margin-left: 5px; font-size: 16px; }
 }
+
+
 /* 600PX ALTI */
 @media (max-width: 600px) {
     .arkalogo-img, .logo-img {
@@ -249,26 +251,21 @@ body {
     .logo3-img {
         display: block !important;
         position: absolute;
-        /* Negatif değerleri azalttık: Artık ekrandan taşmayacak ve kesilmeyecek */
-        top: -5px;      /* Çok yukarıdaydı, -30'dan -5'e çektik */
-        left: 5px;      /* Ekranın dışındaydı (-35), içeriye (+5) aldık */
-        height: 65px;   /* Mobilde daha dengeli görünmesi için hafif küçülttük */
+        top: -30px;
+        left: -35px;
+        height: 77px;
         width: auto;
         z-index: 1001;
-        
-        /* Kesilmeyi önlemek için genişlik sınırlaması ekledik */
-        max-width: 100%; 
-        object-fit: contain; 
     }
 
-    /* 600px altında yukarıdaki genel ikonları gizle */
+    /* 600px altında yukarıdaki genel ikonları gizle, senin özel konumlandırdıklarını göster */
     .header-right { display: none !important; }
 
     .uye600-img {
         display: block !important;
         position: absolute;
-        top: 45px;      /* Logonun yeni konumuna göre biraz yukarı aldık */
-        right: 15px;    /* İkonları sağa daha iyi yasladık */
+        top: 50px;
+        right: 60px;
         height: 15px;
         width: auto;
         z-index: 1002;
@@ -277,17 +274,15 @@ body {
     .edevlet600-img {
         display: block !important;
         position: absolute;
-        top: 45px;
-        right: 80px;    /* Üye girişi ikonuyla çakışmaması için arayı açtık */
+        top: 50px;
+        right: 125px;
         height: 25px;
         width: auto;
         z-index: 1002;
     }
 
     .logo-area {
-        /* Yazının logonun üzerine binmemesi için sola boşluk verdik */
-        padding-left: 75px; 
-        font-size: 14px; /* Metin çok uzunsa sığması için küçülttük */
+        padding-left: 70px;
     }
 
     .pdf-container { display: none !important; }
