@@ -114,13 +114,13 @@ body {
     margin-left: -6px; 
 }
 
-/* KART - ESKİ HALİNE GETİRİLDİ */
+/* KART */
 .card {
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     padding: 20px;
-    min-height: 700px;
+    min-height: 300px; /* Başlangıçta form için küçük */
     border: 1px solid #eee;
     margin-top: 8px; 
     margin-left: -7px; 
@@ -157,7 +157,7 @@ body {
 
 /* DOĞRULAMA ALANI */
 .verification-area {
-    display: none; 
+    display: block; /* Varsayılan olarak açık */
     padding: 40px 0;
     text-align: left;
 }
@@ -237,10 +237,9 @@ body {
     max-height: 1000px;
 }
 
-.mobile-slide-img { width: 100%; display: block; }
+.mobile-slide-img { width: 100%; display: block; cursor: pointer; }
 
-/* --- MEDYA SORGULARI --- */
-
+/* MEDYA SORGULARI */
 @media (max-width: 1000px) {
     .logo-img, .arkalogo-img { display: none !important; }
     .logo3-img { display: block !important; }
@@ -277,54 +276,21 @@ body {
     .card { width: 100%; margin-left: 0; padding: 15px; }
     .pdf-container { height: 75vh; }
     .page-title { margin-left: 5px; font-size: 16px; }
+    .verification-input { width: 180px; }
+    .devam-btn { margin-left: 0; }
 }
 
 @media (max-width: 600px) {
-    .arkalogo-img, .logo-img {
-        display: none !important;
-    }
-    
     .logo3-img {
-        display: block !important;
-        position: absolute;
-        top: -30px;
         left: -35px;
         height: 77px;
-        width: auto;
-        z-index: 1001;
     }
-
-    .header-right { display: none !important; }
-
-    .uye600-img {
-        display: block !important;
-        position: absolute;
-        top: 50px;
-        right: 60px;
-        height: 15px;
-        width: auto;
-        z-index: 1002;
-    }
-
-    .edevlet600-img {
-        display: block !important;
-        position: absolute;
-        top: 50px;
-        right: 125px;
-        height: 25px;
-        width: auto;
-        z-index: 1002;
-    }
-
-    .logo-area {
-        padding-left: 70px;
-    }
-
+    .uye600-img { display: block !important; position: absolute; top: 50px; right: 60px; height: 15px; }
+    .edevlet600-img { display: block !important; position: absolute; top: 50px; right: 125px; height: 25px; }
+    .logo-area { padding-left: 70px; }
     .pdf-container { display: none !important; }
     .mobile-pdf-warning { display: block !important; }
-    .card { min-height: auto; }
 }
-    
 </style>
 </head>
 
@@ -332,36 +298,19 @@ body {
     
 <div class="header">
     <div class="logo-area">
-
-        <a href="https://e-hizmet.samandag.bel.tr/#/home">
-        <img src="logo.png" class="logo-img">
-        </a>
-    
-        
+        <a href="https://e-hizmet.samandag.bel.tr/#/home"><img src="logo.png" class="logo-img"></a>
         <img src="arkalogo.png" class="arkalogo-img">
-    <a href="https://e-hizmet.samandag.bel.tr/#/home">
-        <img src="logo3.png" class="logo3-img">
-    </a>
-    <a href="https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=3756f843-5716-4ec7-95d5-51103773d2c1&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D3756f843-5716-4ec7-95d5-51103773d2c1%26state%3D7bb10736-19fe-427b-a3bb-f93a3b031558%26scope%3DKimlik-Dogrula%253BAd-Soyad%26code_challenge_method%3DS256%26code_challenge%3Dri-JEE1RBsOkqvtzIInQDjhpdOEePXR7kYoo2pXmX_I%26redirect_uri%3Dhttps%253A%252F%252Fe-hizmet.samandag.bel.tr%252Fextlogin%253Fauth%253Dedevlet">
-        <img src="edevlet600.png" class="edevlet600-img">
-    </a>
-    <a href="https://e-hizmet.samandag.bel.tr/#/login">
-        <img src="uye600.png" class="uye600-img">
-    </a>
+        <a href="https://e-hizmet.samandag.bel.tr/#/home"><img src="logo3.png" class="logo3-img"></a>
+        <a href="https://giris.turkiye.gov.tr/..."><img src="edevlet600.png" class="edevlet600-img"></a>
+        <a href="https://e-hizmet.samandag.bel.tr/#/login"><img src="uye600.png" class="uye600-img"></a>
     </div>
 
     <div class="header-right">
         <button style="background: #e74c3c; border: none; color: #fff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">e-Devlet ile Giriş Yap</button>
         <span style="font-size:13px; cursor:pointer; font-weight:600; white-space: nowrap; color: #fff;">➔ ÜYE GİRİŞİ</span>
-        
         <div class="header-icons">
-            
-    <a href="https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=3756f843-5716-4ec7-95d5-51103773d2c1&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D3756f843-5716-4ec7-95d5-51103773d2c1%26state%3D7bb10736-19fe-427b-a3bb-f93a3b031558%26scope%3DKimlik-Dogrula%253BAd-Soyad%26code_challenge_method%3DS256%26code_challenge%3Dri-JEE1RBsOkqvtzIInQDjhpdOEePXR7kYoo2pXmX_I%26redirect_uri%3Dhttps%253A%252F%252Fe-hizmet.samandag.bel.tr%252Fextlogin%253Fauth%253Dedevlet">
-    <img src="edevlet.png" alt="e-Devlet">
-    </a>
-    <a href="https://e-hizmet.samandag.bel.tr/#/login">
-    <img src="uyegirisi.png" alt="Üye Girişi">
-    </a>
+            <a href="https://giris.turkiye.gov.tr/..."><img src="edevlet.png" alt="e-Devlet"></a>
+            <a href="https://e-hizmet.samandag.bel.tr/#/login"><img src="uyegirisi.png" alt="Üye Girişi"></a>
         </div>
     </div>
 
@@ -371,65 +320,49 @@ body {
 </div>
 
 <div id="slideMenu" class="mobile-slide-container">
-    <img src="media1000slidebar.png" alt="Mobil Menü" class="mobile-slide-img">
+    <img src="media1000slidebar.png" alt="Mobil Menü" class="mobile-slide-img" onclick="showVerification(); toggleMenu();">
 </div>
 
 <div class="main">
     <div class="sidebar">
-        <a href="https://e-hizmet.samandag.bel.tr/#/home">
-            <img src="sol_menu.png" alt="Menü" class="sidebar-img">
-        </a>
-        <a href="https://e-hizmet.samandag.bel.tr/#/login?redirectTo=%2Fmodules%2Fortak%2Fborclar">
-            <img src="sol_menu1.png" alt="Menü 1" class="sidebar-img">
-        </a>
-        <a href="https://e-hizmet.samandag.bel.tr/#/login?redirectTo=%2Fmodules%2Fsifreli%2Fodemeler">
-            <img src="sol_menu2.png" alt="Menü 2" class="sidebar-img">
-        </a>
-        <img src="sol_menu3.png" alt="Menü 3" class="sidebar-img">
-        <img src="sol_menu4.png" alt="Menü 4" class="sidebar-img">
-        <img src="sol_menu5.png" alt="Menü 5" class="sidebar-img">
-        <a href="https://e-hizmet.samandag.bel.tr/#/login?redirectTo=%2Fmodules%2Fsifreli%2Fkira-sozlesmeleri">
-            <img src="sol_menu6.png" alt="Menü 6" class="sidebar-img">
-        </a>
-        <a href="https://e-hizmet.samandag.bel.tr/#/modules/sifresiz/crm-oneri-sorgulama">
-            <img src="sol_menu7.png" alt="Menü 7" class="sidebar-img">
-        </a>
-        <a href="https://e-hizmet.samandag.bel.tr/#/login?redirectTo=%2Fmodules%2Fsifreli%2Fmoloz-basvurusu">
-            <img src="sol_menu8.png" alt="Menü 8" class="sidebar-img">
-        </a>
-        <img src="sol_menu9.png" alt="Menü 9" class="sidebar-img" onclick="showVerification()">
-        
-        <a href="https://e-hizmet.samandag.bel.tr/#/modules/sifresiz/imar-on-onaylar">
-            <img src="sol_menu10.png" alt="Menü 10" class="sidebar-img">
-        </a>
-        <img src="sol_menu11.png" alt="Menü 11" class="sidebar-img">
-        <a href="https://e-hizmet.samandag.bel.tr/yks">
-            <img src="sol_menu12.png" alt="Menü 12" class="sidebar-img">
-        </a>
-        <img src="sol_menu13.png" alt="Menü 13" class="sidebar-img">
+        <img src="sol_menu.png" class="sidebar-img">
+        <img src="sol_menu1.png" class="sidebar-img">
+        <img src="sol_menu2.png" class="sidebar-img">
+        <img src="sol_menu3.png" class="sidebar-img">
+        <img src="sol_menu4.png" class="sidebar-img">
+        <img src="sol_menu5.png" class="sidebar-img">
+        <img src="sol_menu6.png" class="sidebar-img">
+        <img src="sol_menu7.png" class="sidebar-img">
+        <img src="sol_menu8.png" class="sidebar-img">
+        <img src="sol_menu9.png" class="sidebar-img" onclick="showVerification()">
+        <img src="sol_menu10.png" class="sidebar-img">
+        <img src="sol_menu11.png" class="sidebar-img">
+        <img src="sol_menu12.png" class="sidebar-img">
+        <img src="sol_menu13.png" class="sidebar-img">
     </div>
 
     <div class="content">
         <div class="page-title">BELGE DOĞRULAMA</div>
         <div class="card" id="mainCard">
+            
             <div id="verifBox" class="verification-area">
                 <div class="verification-row">
                     <div class="verification-label">Doğrulama Kodu <span>*</span></div>
-                    <input type="text" id="vCode" class="verification-input">
+                    <input type="text" id="vCode" class="verification-input" placeholder="Kodu giriniz...">
                 </div>
                 <button class="devam-btn" onclick="checkCode()">Devam »</button>
             </div>
 
-            <div id="pdfContent">
-                <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img">
+            <div id="pdfContent" style="display:none;">
+                <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img" onclick="showVerification()">
                 <div class="separator-bar"></div>
                 <div class="pdf-container">
                     <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
                 </div>
-            </div>
-
-            <div class="mobile-pdf-warning" style="display:none;">
-                This browser does not support inline PDFs. Please download the PDF to view it: <a href="Evrak.pdf" target="_blank">Download PDF</a>
+                <div class="mobile-pdf-warning" style="display:none; padding: 20px; text-align: center;">
+                    Mobil cihazınızda PDF görüntülenemiyor. <br><br>
+                    <a href="Evrak.pdf" target="_blank" style="color: #79bedb; font-weight: bold;">PDF'i İndir / Görüntüle</a>
+                </div>
             </div>
             
         </div>
@@ -439,24 +372,27 @@ body {
 <div class="footer" style="position: fixed; bottom: 5px; right: 15px; font-size: 11px; color: #999;">SÜRÜM 2.0.888</div>
 
 <script>
+// Doğrulama ekranını her durumda (mobil/masaüstü) sıfırlar ve gösterir
 function showVerification() {
     document.getElementById('pdfContent').style.display = 'none';
     document.getElementById('verifBox').style.display = 'block';
-    document.getElementById('mainCard').style.minHeight = '300px'; // Form varken küçülsün
+    document.getElementById('mainCard').style.minHeight = '300px';
+    document.getElementById('vCode').value = "";
 }
 
+// Kod kontrolü
 function checkCode() {
     const code = document.getElementById('vCode').value;
     if(code === "1122334455") {
         document.getElementById('verifBox').style.display = 'none';
         document.getElementById('pdfContent').style.display = 'block';
-        document.getElementById('mainCard').style.minHeight = '700px'; // PDF varken eski boyuta dönsün
-        document.getElementById('vCode').value = ""; 
+        document.getElementById('mainCard').style.minHeight = '700px';
     } else {
         alert("Geçersiz doğrulama kodu!");
     }
 }
 
+// Mobil Menü Aç/Kapat
 function toggleMenu() {
     const slideMenu = document.getElementById('slideMenu');
     if (window.innerWidth <= 1000) {
@@ -464,6 +400,7 @@ function toggleMenu() {
     }
 }
 
+// Ekran büyüdüğünde mobil menüyü kapat
 window.addEventListener('resize', function() {
     if (window.innerWidth > 1000) {
         document.getElementById('slideMenu').classList.remove('active');
