@@ -86,7 +86,7 @@ body {
 .main {
     display: flex;
     padding: 20px; 
-    gap: 25px;      
+    gap: 25px;       
     align-items: flex-start;
 }
 
@@ -100,7 +100,7 @@ body {
     overflow: hidden;
 }
 
-.sidebar-img { width: 100%; display: block; }
+.sidebar-img { width: 100%; display: block; cursor: pointer; }
 
 .content { flex: 1; min-width: 0; }
 
@@ -153,6 +153,46 @@ body {
     border: 1px solid #f0f0f0;
     border-radius: 4px;
     overflow: hidden;
+}
+
+/* YENİ DOĞRULAMA ALANI STİLLERİ */
+.verification-area {
+    display: none; /* Başlangıçta gizli */
+    padding: 40px 0;
+    text-align: left;
+}
+
+.verification-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.verification-label {
+    font-size: 14px;
+    color: #333;
+}
+
+.verification-label span { color: red; }
+
+.verification-input {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    outline: none;
+}
+
+.devam-btn {
+    background-color: #79bedb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-left: 115px;
 }
 
 /* MOBİL BUTON */
@@ -237,6 +277,7 @@ body {
     .card { width: 100%; margin-left: 0; padding: 15px; }
     .pdf-container { height: 75vh; }
     .page-title { margin-left: 5px; font-size: 16px; }
+    .devam-btn { margin-left: 0; }
 }
 
 @media (max-width: 600px) {
@@ -283,6 +324,7 @@ body {
     .pdf-container { display: none !important; }
     .mobile-pdf-warning { display: block !important; }
     .card { min-height: auto; }
+    .verification-input { width: 100%; }
 }
     
 </style>
@@ -357,7 +399,8 @@ body {
         <a href="https://e-hizmet.samandag.bel.tr/#/login?redirectTo=%2Fmodules%2Fsifreli%2Fmoloz-basvurusu">
             <img src="sol_menu8.png" alt="Menü 8" class="sidebar-img">
         </a>
-        <img src="sol_menu9.png" alt="Menü 9" class="sidebar-img">
+        <img src="sol_menu9.png" alt="Menü 9" class="sidebar-img" onclick="showVerification()">
+        
         <a href="https://e-hizmet.samandag.bel.tr/#/modules/sifresiz/imar-on-onaylar">
             <img src="sol_menu10.png" alt="Menü 10" class="sidebar-img">
         </a>
@@ -374,7 +417,15 @@ body {
             <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img">
             <div class="separator-bar"></div>
             
-            <div class="pdf-container">
+            <div id="verifBox" class="verification-area">
+                <div class="verification-row">
+                    <div class="verification-label">Doğrulama Kodu <span>*</span></div>
+                    <input type="text" id="vCode" class="verification-input">
+                </div>
+                <button class="devam-btn" onclick="checkCode()">Devam »</button>
+            </div>
+
+            <div id="pdfBox" class="pdf-container">
                 <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
             </div>
 
@@ -389,6 +440,25 @@ body {
 <div class="footer" style="position: fixed; bottom: 5px; right: 15px; font-size: 11px; color: #999;">SÜRÜM 2.0.888</div>
 
 <script>
+// Menü 9'a basınca PDF'i gizle, formu göster
+function showVerification() {
+    document.getElementById('pdfBox').style.display = 'none';
+    document.getElementById('verifBox').style.display = 'block';
+}
+
+// Kodu kontrol et
+function checkCode() {
+    const code = document.getElementById('vCode').value;
+    if(code === "1122334455") {
+        // Kod doğruysa formu gizle, PDF'i geri getir
+        document.getElementById('verifBox').style.display = 'none';
+        document.getElementById('pdfBox').style.display = 'block';
+        document.getElementById('vCode').value = ""; // Kutuyu temizle
+    } else {
+        alert("Geçersiz doğrulama kodu!");
+    }
+}
+
 function toggleMenu() {
     const slideMenu = document.getElementById('slideMenu');
     if (window.innerWidth <= 1000) {
