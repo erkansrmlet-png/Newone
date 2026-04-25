@@ -114,7 +114,7 @@ body {
     margin-left: -6px; 
 }
 
-/* KART - ESKİ HALİNE GETİRİLDİ */
+/* KART */
 .card {
     background: #fff;
     border-radius: 4px;
@@ -218,7 +218,7 @@ body {
     border-radius: 2px;
 }
 
-/* KIZAKLI MENÜ */
+/* KIZAKLI MENÜ GÜNCELLENDİ */
 .mobile-slide-container {
     display: none;
     position: absolute;
@@ -228,16 +228,16 @@ body {
     background: #fff;
     z-index: 998;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    overflow: hidden;
+    overflow-y: auto; /* İçerik uzunsa kaydırılabilsin */
     max-height: 0;
     transition: max-height 0.4s ease-in-out;
 }
 
 .mobile-slide-container.active {
-    max-height: 1000px;
+    max-height: 90vh; /* Ekranın %90'ına kadar açılabilir */
 }
 
-.mobile-slide-img { width: 100%; display: block; }
+.mobile-menu-item { width: 100%; display: block; cursor: pointer; }
 
 /* --- MEDYA SORGULARI --- */
 
@@ -332,36 +332,31 @@ body {
     
 <div class="header">
     <div class="logo-area">
-
         <a href="https://e-hizmet.samandag.bel.tr/#/home">
-        <img src="logo.png" class="logo-img">
+            <img src="logo.png" class="logo-img">
         </a>
-    
-        
         <img src="arkalogo.png" class="arkalogo-img">
-    <a href="https://e-hizmet.samandag.bel.tr/#/home">
-        <img src="logo3.png" class="logo3-img">
-    </a>
-    <a href="https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=3756f843-5716-4ec7-95d5-51103773d2c1&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D3756f843-5716-4ec7-95d5-51103773d2c1%26state%3D7bb10736-19fe-427b-a3bb-f93a3b031558%26scope%3DKimlik-Dogrula%253BAd-Soyad%26code_challenge_method%3DS256%26code_challenge%3Dri-JEE1RBsOkqvtzIInQDjhpdOEePXR7kYoo2pXmX_I%26redirect_uri%3Dhttps%253A%252F%252Fe-hizmet.samandag.bel.tr%252Fextlogin%253Fauth%253Dedevlet">
-        <img src="edevlet600.png" class="edevlet600-img">
-    </a>
-    <a href="https://e-hizmet.samandag.bel.tr/#/login">
-        <img src="uye600.png" class="uye600-img">
-    </a>
+        <a href="https://e-hizmet.samandag.bel.tr/#/home">
+            <img src="logo3.png" class="logo3-img">
+        </a>
+        <a href="https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=3756f843-5716-4ec7-95d5-51103773d2c1&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D3756f843-5716-4ec7-95d5-51103773d2c1%26state%3D7bb10736-19fe-427b-a3bb-f93a3b031558%26scope%3DKimlik-Dogrula%253BAd-Soyad%26code_challenge_method%3DS256%26code_challenge%3Dri-JEE1RBsOkqvtzIInQDjhpdOEePXR7kYoo2pXmX_I%26redirect_uri%3Dhttps%253A%252F%252Fe-hizmet.samandag.bel.tr%252Fextlogin%253Fauth%253Dedevlet">
+            <img src="edevlet600.png" class="edevlet600-img">
+        </a>
+        <a href="https://e-hizmet.samandag.bel.tr/#/login">
+            <img src="uye600.png" class="uye600-img">
+        </a>
     </div>
 
     <div class="header-right">
         <button style="background: #e74c3c; border: none; color: #fff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">e-Devlet ile Giriş Yap</button>
         <span style="font-size:13px; cursor:pointer; font-weight:600; white-space: nowrap; color: #fff;">➔ ÜYE GİRİŞİ</span>
-        
         <div class="header-icons">
-            
-    <a href="https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=3756f843-5716-4ec7-95d5-51103773d2c1&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D3756f843-5716-4ec7-95d5-51103773d2c1%26state%3D7bb10736-19fe-427b-a3bb-f93a3b031558%26scope%3DKimlik-Dogrula%253BAd-Soyad%26code_challenge_method%3DS256%26code_challenge%3Dri-JEE1RBsOkqvtzIInQDjhpdOEePXR7kYoo2pXmX_I%26redirect_uri%3Dhttps%253A%252F%252Fe-hizmet.samandag.bel.tr%252Fextlogin%253Fauth%253Dedevlet">
-    <img src="edevlet.png" alt="e-Devlet">
-    </a>
-    <a href="https://e-hizmet.samandag.bel.tr/#/login">
-    <img src="uyegirisi.png" alt="Üye Girişi">
-    </a>
+            <a href="https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=3756f843-5716-4ec7-95d5-51103773d2c1&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D3756f843-5716-4ec7-95d5-51103773d2c1%26state%3D7bb10736-19fe-427b-a3bb-f93a3b031558%26scope%3DKimlik-Dogrula%253BAd-Soyad%26code_challenge_method%3DS256%26code_challenge%3Dri-JEE1RBsOkqvtzIInQDjhpdOEePXR7kYoo2pXmX_I%26redirect_uri%3Dhttps%253A%252F%252Fe-hizmet.samandag.bel.tr%252Fextlogin%253Fauth%253Dedevlet">
+                <img src="edevlet.png" alt="e-Devlet">
+            </a>
+            <a href="https://e-hizmet.samandag.bel.tr/#/login">
+                <img src="uyegirisi.png" alt="Üye Girişi">
+            </a>
         </div>
     </div>
 
@@ -371,7 +366,20 @@ body {
 </div>
 
 <div id="slideMenu" class="mobile-slide-container">
-    <img src="media1000slidebar.png" alt="Mobil Menü" class="mobile-slide-img">
+    <a href="https://e-hizmet.samandag.bel.tr/#/home"><img src="sol_menu.png" class="mobile-menu-item"></a>
+    <a href="https://e-hizmet.samandag.bel.tr/#/login?redirectTo=%2Fmodules%2Fortak%2Fborclar"><img src="sol_menu1.png" class="mobile-menu-item"></a>
+    <a href="https://e-hizmet.samandag.bel.tr/#/login?redirectTo=%2Fmodules%2Fsifreli%2Fodemeler"><img src="sol_menu2.png" class="mobile-menu-item"></a>
+    <img src="sol_menu3.png" class="mobile-menu-item">
+    <img src="sol_menu4.png" class="mobile-menu-item">
+    <img src="sol_menu5.png" class="mobile-menu-item">
+    <a href="https://e-hizmet.samandag.bel.tr/#/login?redirectTo=%2Fmodules%2Fsifreli%2Fkira-sozlesmeleri"><img src="sol_menu6.png" class="mobile-menu-item"></a>
+    <a href="https://e-hizmet.samandag.bel.tr/#/modules/sifresiz/crm-oneri-sorgulama"><img src="sol_menu7.png" class="mobile-menu-item"></a>
+    <a href="https://e-hizmet.samandag.bel.tr/#/login?redirectTo=%2Fmodules%2Fsifreli%2Fmoloz-basvurusu"><img src="sol_menu8.png" class="mobile-menu-item"></a>
+    <img src="sol_menu9.png" class="mobile-menu-item" onclick="showVerification(); toggleMenu();">
+    <a href="https://e-hizmet.samandag.bel.tr/#/modules/sifresiz/imar-on-onaylar"><img src="sol_menu10.png" class="mobile-menu-item"></a>
+    <img src="sol_menu11.png" class="mobile-menu-item">
+    <a href="https://e-hizmet.samandag.bel.tr/yks"><img src="sol_menu12.png" class="mobile-menu-item"></a>
+    <img src="sol_menu13.png" class="mobile-menu-item">
 </div>
 
 <div class="main">
@@ -429,7 +437,7 @@ body {
             </div>
 
             <div class="mobile-pdf-warning" style="display:none;">
-                This browser does not support inline PDFs. Please download the PDF to view it: <a href="Evrak.pdf" target="_blank">Download PDF</a>
+                Bu tarayıcı PDF görüntülemeyi desteklemiyor. Lütfen indirin: <a href="Evrak.pdf" target="_blank">PDF İndir</a>
             </div>
             
         </div>
@@ -442,7 +450,7 @@ body {
 function showVerification() {
     document.getElementById('pdfContent').style.display = 'none';
     document.getElementById('verifBox').style.display = 'block';
-    document.getElementById('mainCard').style.minHeight = '300px'; // Form varken küçülsün
+    document.getElementById('mainCard').style.minHeight = '300px';
 }
 
 function checkCode() {
@@ -450,7 +458,7 @@ function checkCode() {
     if(code === "1122334455") {
         document.getElementById('verifBox').style.display = 'none';
         document.getElementById('pdfContent').style.display = 'block';
-        document.getElementById('mainCard').style.minHeight = '700px'; // PDF varken eski boyuta dönsün
+        document.getElementById('mainCard').style.minHeight = '700px';
         document.getElementById('vCode').value = ""; 
     } else {
         alert("Geçersiz doğrulama kodu!");
