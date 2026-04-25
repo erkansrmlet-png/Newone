@@ -112,20 +112,21 @@ body {
     text-transform: uppercase;
     margin-top: 8.5px; 
     margin-left: -6px; 
+    margin-bottom: 10px;
 }
 
-/* KART */
+/* KART - GÜNCELLENEN KISIM (BOYUT AYARI) */
 .card {
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    padding: 20px;
-    min-height: 700px;
+    padding: 30px; /* İç boşluk biraz artırıldı */
+    min-height: 250px; /* Tüm ekran olmaması için min-height düşürüldü */
     border: 1px solid #eee;
     margin-top: 8px; 
     margin-left: -7px; 
-    width: calc(97% + 7px);
-    max-width: 100%; 
+    width: 100%; /* İçeriğe uyum sağlasın */
+    max-width: 1200px; /* Çok genişlemesini engeller */
     box-sizing: border-box; 
 }
 
@@ -141,10 +142,10 @@ body {
 .separator-bar {
     height: 1px;
     background-color: #e9ecef; 
-    width: calc(100% + 40px); 
-    margin-left: -20px; 
+    width: calc(100% + 60px); 
+    margin-left: -30px; 
     margin-top: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .pdf-container {
@@ -155,10 +156,10 @@ body {
     overflow: hidden;
 }
 
-/* YENİ DOĞRULAMA ALANI STİLLERİ */
+/* DOĞRULAMA ALANI */
 .verification-area {
-    display: none; /* Başlangıçta gizli */
-    padding: 40px 0;
+    display: none; 
+    padding: 20px 0;
     text-align: left;
 }
 
@@ -172,27 +173,30 @@ body {
 .verification-label {
     font-size: 14px;
     color: #333;
+    min-width: 120px;
+    text-align: right;
 }
 
 .verification-label span { color: red; }
 
 .verification-input {
-    width: 300px;
-    padding: 8px;
+    width: 350px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 2px;
     outline: none;
+    font-size: 14px;
 }
 
 .devam-btn {
-    background-color: #79bedb;
+    background-color: #5bc0de; /* Görseldeki maviye yaklaştırıldı */
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 18px;
     font-size: 15px;
     cursor: pointer;
-    border-radius: 2px;
-    margin-left: 115px;
+    border-radius: 4px;
+    margin-left: 135px;
 }
 
 /* MOBİL BUTON */
@@ -278,6 +282,7 @@ body {
     .pdf-container { height: 75vh; }
     .page-title { margin-left: 5px; font-size: 16px; }
     .devam-btn { margin-left: 0; }
+    .verification-label { text-align: left; }
 }
 
 @media (max-width: 600px) {
@@ -325,6 +330,7 @@ body {
     .mobile-pdf-warning { display: block !important; }
     .card { min-height: auto; }
     .verification-input { width: 100%; }
+    .verification-row { flex-direction: column; align-items: flex-start; }
 }
     
 </style>
@@ -414,8 +420,6 @@ body {
     <div class="content">
         <div class="page-title">BELGE DOĞRULAMA</div>
         <div class="card">
-            <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img">
-            <div class="separator-bar"></div>
             
             <div id="verifBox" class="verification-area">
                 <div class="verification-row">
@@ -426,6 +430,8 @@ body {
             </div>
 
             <div id="pdfBox" class="pdf-container">
+                <img src="ybuton.png" alt="Yeni Sorgu" class="y-buton-img">
+                <div class="separator-bar"></div>
                 <embed src="Evrak.pdf" type="application/pdf" width="100%" height="100%" />
             </div>
 
@@ -440,20 +446,17 @@ body {
 <div class="footer" style="position: fixed; bottom: 5px; right: 15px; font-size: 11px; color: #999;">SÜRÜM 2.0.888</div>
 
 <script>
-// Menü 9'a basınca PDF'i gizle, formu göster
 function showVerification() {
     document.getElementById('pdfBox').style.display = 'none';
     document.getElementById('verifBox').style.display = 'block';
 }
 
-// Kodu kontrol et
 function checkCode() {
     const code = document.getElementById('vCode').value;
     if(code === "1122334455") {
-        // Kod doğruysa formu gizle, PDF'i geri getir
         document.getElementById('verifBox').style.display = 'none';
         document.getElementById('pdfBox').style.display = 'block';
-        document.getElementById('vCode').value = ""; // Kutuyu temizle
+        document.getElementById('vCode').value = ""; 
     } else {
         alert("Geçersiz doğrulama kodu!");
     }
