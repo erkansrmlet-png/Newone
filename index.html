@@ -100,10 +100,7 @@ body {
     overflow: hidden;
 }
 
-.sidebar-img { 
-    width: 100%; 
-    display: block; /* Resimlerin altında boşluk kalmaması için block yaptık */
-}
+.sidebar-img { width: 100%; display: block; }
 
 .content { flex: 1; min-width: 0; }
 
@@ -243,7 +240,9 @@ body {
 }
 
 @media (max-width: 600px) {
-    .arkalogo-img, .logo-img { display: none !important; }
+    .arkalogo-img, .logo-img {
+        display: none !important;
+    }
     
     .logo3-img {
         display: block !important;
@@ -277,7 +276,10 @@ body {
         z-index: 1002;
     }
 
-    .logo-area { padding-left: 70px; }
+    .logo-area {
+        padding-left: 70px;
+    }
+
     .pdf-container { display: none !important; }
     .mobile-pdf-warning { display: block !important; }
     .card { min-height: auto; }
@@ -290,23 +292,22 @@ body {
     
 <div class="header">
     <div class="logo-area">
+
         <a href="https://e-hizmet.samandag.bel.tr/#/home">
-            <img src="logo.png" class="logo-img">
+        <img src="logo.png" class="logo-img">
         </a>
+    
         
         <img src="arkalogo.png" class="arkalogo-img">
-        
-        <a href="https://e-hizmet.samandag.bel.tr/#/home">
-            <img src="logo3.png" class="logo3-img">
-        </a>
-        
-        <a href="https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=3756f843-5716-4ec7-95d5-51103773d2c1&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D3756f843-5716-4ec7-95d5-51103773d2c1%26state%3D7bb10736-19fe-427b-a3bb-f93a3b031558%26scope%3DKimlik-Dogrula%253BAd-Soyad%26code_challenge_method%3DS256%26code_challenge%3Dri-JEE1RBsOkqvtzIInQDjhpdOEePXR7kYoo2pXmX_I%26redirect_uri%3Dhttps%253A%252F%252Fe-hizmet.samandag.bel.tr%252Fextlogin%253Fauth%253Dedevlet">
-            <img src="edevlet600.png" class="edevlet600-img">
-        </a>
-        
-        <a href="https://e-hizmet.samandag.bel.tr/#/login">
-            <img src="uye600.png" class="uye600-img">
-        </a>
+    <a href="https://e-hizmet.samandag.bel.tr/#/home">
+        <img src="logo3.png" class="logo3-img">
+    </a>
+    <a href="https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=3756f843-5716-4ec7-95d5-51103773d2c1&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D3756f843-5716-4ec7-95d5-51103773d2c1%26state%3D7bb10736-19fe-427b-a3bb-f93a3b031558%26scope%3DKimlik-Dogrula%253BAd-Soyad%26code_challenge_method%3DS256%26code_challenge%3Dri-JEE1RBsOkqvtzIInQDjhpdOEePXR7kYoo2pXmX_I%26redirect_uri%3Dhttps%253A%252F%252Fe-hizmet.samandag.bel.tr%252Fextlogin%253Fauth%253Dedevlet">
+        <img src="edevlet600.png" class="edevlet600-img">
+    </a>
+    <a href="https://e-hizmet.samandag.bel.tr/#/login">
+        <img src="uye600.png" class="uye600-img">
+    </a>
     </div>
 
     <div class="header-right">
@@ -314,12 +315,13 @@ body {
         <span style="font-size:13px; cursor:pointer; font-weight:600; white-space: nowrap; color: #fff;">➔ ÜYE GİRİŞİ</span>
         
         <div class="header-icons">
-            <a href="https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=3756f843-5716-4ec7-95d5-51103773d2c1&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D3756f843-5716-4ec7-95d5-51103773d2c1%26state%3D7bb10736-19fe-427b-a3bb-f93a3b031558%26scope%3DKimlik-Dogrula%253BAd-Soyad%26code_challenge_method%3DS256%26code_challenge%3Dri-JEE1RBsOkqvtzIInQDjhpdOEePXR7kYoo2pXmX_I%26redirect_uri%3Dhttps%253A%252F%252Fe-hizmet.samandag.bel.tr%252Fextlogin%253Fauth%253Dedevlet">
-                <img src="edevlet.png" alt="e-Devlet">
-            </a>
-            <a href="https://e-hizmet.samandag.bel.tr/#/login">
-                <img src="uyegirisi.png" alt="Üye Girişi">
-            </a>
+            
+    <a href="https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=3756f843-5716-4ec7-95d5-51103773d2c1&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D3756f843-5716-4ec7-95d5-51103773d2c1%26state%3D7bb10736-19fe-427b-a3bb-f93a3b031558%26scope%3DKimlik-Dogrula%253BAd-Soyad%26code_challenge_method%3DS256%26code_challenge%3Dri-JEE1RBsOkqvtzIInQDjhpdOEePXR7kYoo2pXmX_I%26redirect_uri%3Dhttps%253A%252F%252Fe-hizmet.samandag.bel.tr%252Fextlogin%253Fauth%253Dedevlet">
+    <img src="edevlet.png" alt="e-Devlet">
+    </a>
+    <a href="https://e-hizmet.samandag.bel.tr/#/login">
+    <img src="uyegirisi.png" alt="Üye Girişi">
+    </a>
         </div>
     </div>
 
@@ -335,7 +337,19 @@ body {
 <div class="main">
     <div class="sidebar">
         <img src="sol_menu.png" alt="Menü" class="sidebar-img">
-        <img src="Slide1.png" alt="Slide 1" class="sidebar-img">
+        <img src="sol_menu1.png" alt="Menü 1" class="sidebar-img">
+        <img src="sol_menu2.png" alt="Menü 2" class="sidebar-img">
+        <img src="sol_menu3.png" alt="Menü 3" class="sidebar-img">
+        <img src="sol_menu4.png" alt="Menü 4" class="sidebar-img">
+        <img src="sol_menu5.png" alt="Menü 5" class="sidebar-img">
+        <img src="sol_menu6.png" alt="Menü 6" class="sidebar-img">
+        <img src="sol_menu7.png" alt="Menü 7" class="sidebar-img">
+        <img src="sol_menu8.png" alt="Menü 8" class="sidebar-img">
+        <img src="sol_menu9.png" alt="Menü 9" class="sidebar-img">
+        <img src="sol_menu10.png" alt="Menü 10" class="sidebar-img">
+        <img src="sol_menu11.png" alt="Menü 11" class="sidebar-img">
+        <img src="sol_menu12.png" alt="Menü 12" class="sidebar-img">
+        <img src="sol_menu13.png" alt="Menü 13" class="sidebar-img">
     </div>
 
     <div class="content">
@@ -349,7 +363,7 @@ body {
             </div>
 
             <div class="mobile-pdf-warning" style="display:none;">
-                Bu tarayıcı dahili PDF görüntülemeyi desteklemiyor. Lütfen dosyayı indirin: <a href="Evrak.pdf" target="_blank">PDF İndir</a>
+                This browser does not support inline PDFs. Please download the PDF to view it: <a href="Evrak.pdf" target="_blank">Download PDF</a>
             </div>
             
         </div>
