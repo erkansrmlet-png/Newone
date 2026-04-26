@@ -176,13 +176,15 @@ body {
 .verification-row {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 15px; /* Elemanlar arası boşluk hep sabit kalır */
     margin-bottom: 20px;
 }
 
 .verification-label {
+    width: 150px; /* SABİT GENİŞLİK: Yazı değişse de bu alan hep 150px kalır */
     font-size: 14px;
     color: #333;
+    flex-shrink: 0; /* Yazı kısalınca alanın daralmasını engeller */
 }
 
 .verification-label span { color: red; }
@@ -203,7 +205,9 @@ body {
     font-size: 15px;
     cursor: pointer;
     border-radius: 2px;
-    margin-left: 115px;
+    /* Butonu tam input hizasına hizalamak için: */
+    /* Etiket genişliği (150px) + Gap (15px) = 165px */
+    margin-left: 165px; 
 }
 
 /* MOBİL BUTON */
