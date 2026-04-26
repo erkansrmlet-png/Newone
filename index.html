@@ -176,15 +176,13 @@ body {
 .verification-row {
     display: flex;
     align-items: center;
-    gap: 15px; /* Elemanlar arası boşluk hep sabit kalır */
+    gap: 15px;
     margin-bottom: 20px;
 }
 
 .verification-label {
-    width: 150px; /* SABİT GENİŞLİK: Yazı değişse de bu alan hep 150px kalır */
     font-size: 14px;
     color: #333;
-    flex-shrink: 0; /* Yazı kısalınca alanın daralmasını engeller */
 }
 
 .verification-label span { color: red; }
@@ -205,9 +203,7 @@ body {
     font-size: 15px;
     cursor: pointer;
     border-radius: 2px;
-    /* Butonu tam input hizasına hizalamak için: */
-    /* Etiket genişliği (150px) + Gap (15px) = 165px */
-    margin-left: 165px; 
+    margin-left: 115px;
 }
 
 /* MOBİL BUTON */
@@ -525,25 +521,20 @@ function checkCode() {
     if (currentStep === 1) {
         // AŞAMA 1: Doğrulama Kodu Kontrolü
         if (inputVal === "1122334455") {
-            currentStep = 2; 
-            document.getElementById('vCode').value = ""; 
-            
-            // SİCİL NO YAZISINI BURADAN SAĞA KAYDIRIYORUZ:
-            // Başına eklediğim &nbsp; karakterleri yazıyı sağa iter. 
-            // İhtiyacına göre bu boşlukları artırıp azaltabilirsin.
-            document.getElementById('labelTitle').innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sicil No <span>*</span>'; 
-            
+            currentStep = 2; // Bir sonraki aşamaya geç
+            document.getElementById('vCode').value = ""; // Kutuyu temizle
+            document.getElementById('labelTitle').innerHTML = 'Sicil No <span>*</span>'; // Metni değiştir
         } else {
             alert("Geçersiz doğrulama kodu!");
         }
     } else if (currentStep === 2) {
-        // AŞAMA 2: Sicil No Kontrolü (Aynı kaldı)
+        // AŞAMA 2: Sicil No Kontrolü
         if (inputVal === "112233") {
             document.getElementById('verifBox').style.display = 'none';
             document.getElementById('pdfContent').style.display = 'block';
             document.getElementById('mainCard').style.minHeight = '700px';
             document.getElementById('vCode').value = "";
-            currentStep = 1;
+            currentStep = 1; // İşlem bitince aşamayı resetle
         } else {
             alert("Geçersiz sicil numarası!");
         }
