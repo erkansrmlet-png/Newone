@@ -469,7 +469,7 @@ body {
         <div class="card" id="mainCard">
             <div id="verifBox" class="verification-area">
                 <div class="verification-row">
-                    <div class="verification-label">Doğrulama Kodu <span>*</span></div>
+                    <div class="verification-label" id="labelTitle">Doğrulama Kodu <span>*</span></div>
                     <input type="text" id="vCode" class="verification-input">
                 </div>
                 <button class="devam-btn" onclick="checkCode()">Devam »</button>
@@ -494,7 +494,9 @@ body {
 <div class="footer" style="position: fixed; bottom: 5px; right: 15px; font-size: 11px; color: #999;">SÜRÜM 2.0.888</div>
 
 <script>
-// ALT MENÜLERİ AÇIP KAPATAN FONKSİYON
+// AŞAMA TAKİBİ İÇİN DEĞİŞKEN
+let currentStep = 1; // 1: Doğrulama Kodu, 2: Sicil No
+
 function toggleSubmenu(id) {
     const sub = document.getElementById(id);
     if (sub.style.display === "block") {
@@ -505,20 +507,37 @@ function toggleSubmenu(id) {
 }
 
 function showVerification() {
+    currentStep = 1; // Başa dön
     document.getElementById('pdfContent').style.display = 'none';
     document.getElementById('verifBox').style.display = 'block';
     document.getElementById('mainCard').style.minHeight = '300px';
+    document.getElementById('labelTitle').innerHTML = 'Doğrulama Kodu <span>*</span>';
+    document.getElementById('vCode').value = "";
 }
 
 function checkCode() {
-    const code = document.getElementById('vCode').value;
-    if(code === "1122334455") {
-        document.getElementById('verifBox').style.display = 'none';
-        document.getElementById('pdfContent').style.display = 'block';
-        document.getElementById('mainCard').style.minHeight = '700px';
-        document.getElementById('vCode').value = ""; 
-    } else {
-        alert("Geçersiz doğrulama kodu!");
+    const inputVal = document.getElementById('vCode').value;
+    
+    if (currentStep === 1) {
+        // AŞAMA 1: Doğrulama Kodu Kontrolü
+        if (inputVal === "1122334455") {
+            currentStep = 2; // Bir sonraki aşamaya geç
+            document.getElementById('vCode').value = ""; // Kutuyu temizle
+            document.getElementById('labelTitle').innerHTML = 'Sicil No <span>*</span>'; // Metni değiştir
+        } else {
+            alert("Geçersiz doğrulama kodu!");
+        }
+    } else if (currentStep === 2) {
+        // AŞAMA 2: Sicil No Kontrolü
+        if (inputVal === "112233") {
+            document.getElementById('verifBox').style.display = 'none';
+            document.getElementById('pdfContent').style.display = 'block';
+            document.getElementById('mainCard').style.minHeight = '700px';
+            document.getElementById('vCode').value = "";
+            currentStep = 1; // İşlem bitince aşamayı resetle
+        } else {
+            alert("Geçersiz sicil numarası!");
+        }
     }
 }
 
