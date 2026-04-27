@@ -262,7 +262,8 @@ body {
         position: absolute !important;
         right: 55px !important; 
         top: 22px !important;
-        z-index: 10005 !important; 
+        /* BURAYI DEĞİŞTİRDİK: 10005 çok yüksekti, menü arkasında kalması için düşürdük */
+        z-index: 100 !important;  
         background: transparent !important;
     }
     
@@ -281,8 +282,16 @@ body {
         width: auto !important;
     }
 
-    .mobile-menu-btn { display: flex; }
-    .mobile-slide-container { display: block; }
+    /* Mobil menü butonunun da menü üstünde/yanında erişilebilir olması için */
+    .mobile-menu-btn { 
+        display: flex; 
+        z-index: 10000; 
+    }
+    .mobile-slide-container { 
+        display: block; 
+        /* BURAYI EKLEDİK/GÜNCELLEDİK: Menü her şeyin üstünde açılmalı */
+        z-index: 9999; 
+    }
     
     .main { padding: 10px; }
     .card { width: 100%; margin-left: 0; padding: 15px; }
