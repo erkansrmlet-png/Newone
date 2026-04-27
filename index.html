@@ -334,6 +334,27 @@ body {
     .pdf-container { display: none !important; }
     .mobile-pdf-warning { display: block !important; }
     .card { min-height: auto; }
+.verification-area {
+        padding: 40px 20px !important; /* Yanlardaki 200px boşluğu 20px'e düşürdük */
+        text-align: left;
+    }
+
+    .verification-row {
+        flex-direction: column; /* Etiket ve input alt alta gelsin */
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .verification-input {
+        width: 100% !important; /* Input genişliğini ekranın tamamına yayar */
+        box-sizing: border-box;
+    }
+
+    .devam-btn {
+        margin-left: 0 !important; /* Mobilde butonu sola yaslar veya tam genişlik yapar */
+        width: 150px; /* Görseldeki boyuta uygun sabit genişlik */
+        margin-top: 10px;
+    }
 }
     
 </style>
